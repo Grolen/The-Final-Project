@@ -1,6 +1,8 @@
 import React from 'react'
 // import axios from 'axios'
 import DropDown from '../components/DropDown/DropDown'
+// import NavigatePanel from '../components/NavigatePanel/NavigatePanel'
+import ActualCard from '../components/ActualCard/ActualCard'
 
 const Home = () => {
   const options = [
@@ -66,9 +68,11 @@ const Home = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      {/*<NavigatePanel />*/}
       <DropDown placeholder="Select Brand" options={options} />
       <DropDown placeholder="Select Size" options={size} />
       <DropDown placeholder="Select Price" options={prices} />
+      <ActualCard />
     </div>
   )
 }

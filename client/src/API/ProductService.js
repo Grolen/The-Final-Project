@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-// not finished function
-export class ProductService {
-  static async getProducts() {
-    return axios
-      .get('/products')
-      .then((c) => {})
-      .catch((err) => {
-        console.log(err.message)
-      })
+export default class ProductService {
+  static async getProducts(perPage = 10, page = 1) {
+    const response = await axios.get('/products', {
+      params: {
+        _limit: perPage,
+        _page: page,
+      },
+    })
+    return response
   }
 }
