@@ -1,16 +1,23 @@
 # Code Style :
 
-# Использовать 
+# Использовать
+
 # Custom Hooks
+
 # Axios
-# Boostrap React
+
+# Material UI
+
 # UseSelector,useDispatch
-# PropTypes компонентов 
 
+# PropTypes компонентов
 
-# Структура 
+# Структура
 
-# utils функции выносим отдельно 
-# Custom Hooks тоже отдельно 
+# utils функции выносим отдельно
+
+# Custom Hooks тоже отдельно
+
 # Не писать долгие и большие компоненты, функции
 
+# Код писать максимально масштабируемым и простыми
