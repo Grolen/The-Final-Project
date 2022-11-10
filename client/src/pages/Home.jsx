@@ -72,7 +72,6 @@ const Home = () => {
       <DropDown placeholder="Select Brand" options={options} />
       <DropDown placeholder="Select Size" options={size} />
       <DropDown placeholder="Select Price" options={prices} />
-      <ActualCard />
     </div>
   )
 }

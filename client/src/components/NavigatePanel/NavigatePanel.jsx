@@ -1,31 +1,36 @@
 import React from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Breadcrumb } from 'antd'
+// import { Breadcrumb } from 'antd'
+import Breadcrumbs from '@mui/material/Breadcrumbs'
+import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
 import { useBreadCrumb } from '../../hooks/useBreadCrumb'
 
 const NavigatePanel = ({ startFrom }) => {
   const { navigate, pathNames, reNavigate } = useBreadCrumb()
   return (
-    <Breadcrumb style={{ marginBottom: '20px' }}>
-      <Breadcrumb.Item style={{ cursor: 'pointer' }} onClick={reNavigate}>
+    <Breadcrumbs style={{ marginBottom: '20px' }}>
+      <Link
+        style={{ cursor: 'pointer', textDecoration: 'none' }}
+        onClick={reNavigate}
+      >
         {startFrom}
-      </Breadcrumb.Item>
+      </Link>
       {pathNames.map((pathname, index) => {
         const routeTo = `/${pathNames.slice(0, index + 1).join('/')}`
         const isLast = index === pathNames.length - 1
         return isLast ? (
-          <Breadcrumb.Item>{pathname}</Breadcrumb.Item>
+          <Typography>{pathname}</Typography>
         ) : (
-          <Breadcrumb.Item
+          <Link
             style={{ cursor: 'pointer' }}
             key={index}
             onClick={() => navigate(routeTo)}
           >
             {pathname}
-          </Breadcrumb.Item>
+          </Link>
         )
       })}
-    </Breadcrumb>
+    </Breadcrumbs>
   )
 }
 
