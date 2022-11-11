@@ -3,6 +3,7 @@ import React from 'react'
 import DropDown from '../components/DropDown/DropDown'
 // import NavigatePanel from '../components/NavigatePanel/NavigatePanel'
 import ActualCard from '../components/ActualCard/ActualCard'
+import Preloader from '../components/Preloader/Preloader'
 
 const Home = () => {
   const options = [
@@ -69,6 +70,7 @@ const Home = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       {/*<NavigatePanel />*/}
+      {/*<Preloader />*/}
       <DropDown placeholder="Select Brand" options={options} />
       <DropDown placeholder="Select Size" options={size} />
       <DropDown placeholder="Select Price" options={prices} />

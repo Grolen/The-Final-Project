@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Headline = ({ element }) => {
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <h1> {element} not found! </h1>
     </div>
   )
@@ -14,7 +14,7 @@ Headline.propTypes = {
 }
 
 Headline.defaultProps = {
-  element: 'Posts',
+  element: 'Cards',
 }
 
 export default Headline
