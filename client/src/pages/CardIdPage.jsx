@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import cardIdReducer from '../redux/reducers/cardIdReducer/CardIdReducer'
 import { useNavigate, useParams } from 'react-router-dom'
-// import { findOneCard } from '../redux/reducers/cardIdReducer/ActionCreators'
+import { findOneCard } from '../redux/reducers/cardIdReducer/ActionCreators'
 import Preloader from '../components/Preloader/Preloader'
 // import setCurrentCard from '../redux/reducers/currentCardReducer'
 
@@ -14,9 +14,9 @@ const CardIdPage = () => {
     (state) => state.cardIdReducer
   )
 
-  // useEffect(() => {
-  //   dispatch(findOneCard(params.id))
-  // }, [])
+  useEffect(() => {
+    dispatch(findOneCard(params.id))
+  }, [])
 
   // const redirectToCard = () => {
   //   dispatch(setCurrentCard(card))
