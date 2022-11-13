@@ -11,7 +11,7 @@ const {
   updatePassword
 } = require("../controllers/customers");
 
-// @route   POST /customers
+// @route   POST c
 // @desc    Register customer
 // @access  Public
 router.post("/", createCustomer);

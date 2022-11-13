@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { privateRoutes, publicRoutes } from '../router'
 import { Route, Routes } from 'react-router-dom'
 import ErrorPage from '../pages/ErrorPage'
-import LoginPage from '../pages/LoginPage'
+import LoginPage from '../pages/LoginPage/LoginPage'
 
 const AppRouter = () => {
   // auth
-  const [auth, setAuth] = useState(true)
+  const [auth, setAuth] = useState(false)
   return auth ? (
     <Routes>
       {privateRoutes.map((route) => (

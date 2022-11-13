@@ -82,7 +82,7 @@ router.put(
 // @route   GET /products
 // @desc    GET existing products
 // @access  Public
-router.get("/", getProducts);
+
 
 // @route   GET /products/filter
 // @desc    GET appropriate filtered products
