@@ -1,5 +1,3 @@
-import Button from 'react-bootstrap/Button'
-
 const FavoritePopper = () => {
   return (
     <svg

@@ -1,48 +1,63 @@
-import { Link } from 'react-router-dom'
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
+import { Link, NavLink } from 'react-router-dom'
+import React from 'react'
+import {
+  AppBar,
+  Container,
+  MenuItem,
+  Toolbar,
+  Typography,
+  Box,
+  List,
+  ListItem,
+} from '@mui/material/'
+import { HeaderLinks, CustomLink } from './components/style'
 import Logo from './components/logoSvg'
-import SearchBar from './components/searchBar'
-import BagPopper from './components/bagPopper'
-import FavoritePopper from './components/favoritePopper'
-import LogInPopper from './components/logInPopper'
+import BagPopper from './components/Basket'
+import FavoritePopper from './components/Favorite'
+import LogInPopper from './components/logIn'
 
 const Header = () => {
   return (
     <>
-      <header>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="/home">
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar>
+            <Link to={'/'}>
               <Logo />
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="me-auto text-uppercase">
-                <Nav.Link href="/mens">мужчины</Nav.Link>
-                <Nav.Link href="/womens">женщины</Nav.Link>
-                <Nav.Link href="/childrens">дети</Nav.Link>
-                <Nav.Link href="/brends">бренды</Nav.Link>
-                <Nav.Link href="/news">новости</Nav.Link>
-              </Nav>
-              <SearchBar />
-              <Nav className="me-auto space-between">
-                <Nav.Link href="/">
-                  <BagPopper />
-                </Nav.Link>
-                <Nav.Link href="/">
-                  <FavoritePopper />
-                </Nav.Link>
-                <Nav.Link href="/">
-                  <LogInPopper />
-                </Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-      </header>
+            </Link>
+            <List variant=" ">
+              <ListItem>
+                {' '}
+                <Link to="/mens" style={{ textDecoration: 'none' }}>
+                  <Typography variant="body">mens</Typography>
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link to="/womens">
+                  <Typography variant="body">womens</Typography>
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link to="/childrens">
+                  <Typography variant="body">childrens</Typography>
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link to="/brends">
+                  <Typography variant="body">brends</Typography>
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link to="/news">
+                  <Typography variant="body">news</Typography>
+                </Link>
+              </ListItem>
+            </List>
+          </Toolbar>
+        </Container>
+      </AppBar>
     </>
   )
 }
+
 export default Header
