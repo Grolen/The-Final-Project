@@ -90,7 +90,9 @@ exports.loginCustomer = async (req, res, next) => {
   }
 
   const loginOrEmail = req.body.loginOrEmail;
+  console.log('loginOrEmail 93:', loginOrEmail);
   const password = req.body.password;
+  console.log('password', password);
   const configs = await getConfigs();
 
   // Find customer by email
@@ -99,7 +101,9 @@ exports.loginCustomer = async (req, res, next) => {
   })
     .then(customer => {
       // Check for customer
+      console.log('customer', customer);
       if (!customer) {
+        console.log('errors array: ', errors);
         errors.loginOrEmail = "Customer not found";
         return res.status(404).json(errors);
       }

@@ -5,7 +5,7 @@ export const findOneCard = createAsyncThunk(
   'card/fetchOne',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('./products.json')
+      const response = await axios.get('/api/products')
       return response.data
     } catch (e) {
       return thunkAPI.rejectWithValue('Cannot upload this card')

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { useFetching } from '../../hooks/useFetching'
+// import { AuthContext } from '../../context/AuthContext'
 
 const Form = () => {
   const [formValues, setFormValues] = useState({
@@ -13,9 +14,10 @@ const Form = () => {
     login: '',
   })
   const { loading, request, error, clearError } = useFetching()
+  // const auth = useContext(AuthContext)
 
   useEffect(() => {
-    console.log(error)
+    // console.log(error)
     clearError()
   }, [error, clearError])
 
@@ -39,16 +41,7 @@ const Form = () => {
         login: '',
         lastName: '',
       })
-      console.log(data.message)
-    } catch (e) {}
-  }
-
-  const loginUser = async () => {
-    try {
-      const data = await request('/api/customers/login', 'POST', {
-        ...formValues,
-      })
-      // auth.login(data.token, data.userId)
+      // console.log(data.message)
     } catch (e) {}
   }
 
@@ -119,16 +112,6 @@ const Form = () => {
           disabled={loading}
         >
           Create User
-        </Button>
-        <Button
-          style={{ marginTop: '35px' }}
-          variant="contained"
-          color="primary"
-          type="submit"
-          onClick={loginUser}
-          disabled={loading}
-        >
-          Sign in
         </Button>
       </Grid>
     </form>
