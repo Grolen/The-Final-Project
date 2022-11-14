@@ -17,7 +17,7 @@ const FooterHelpInfo = () => {
         <ListItem disablePadding={true}>
           <Link to="/#" style={{ textDecoration: 'none' }}>
             <Typography variant="h3" sx={footerHelpInfoStyles.h4}>
-              ДЕЛТА СПОРТ
+              Помощь
             </Typography>
           </Link>
         </ListItem>

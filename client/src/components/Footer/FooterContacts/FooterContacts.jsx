@@ -18,7 +18,7 @@ const FooterContacts = () => {
         <ListItem disablePadding={true}>
           <Link to="/#" style={{ textDecoration: 'none' }}>
             <Typography variant="h3" sx={footerContactsStyles.h4}>
-              ДЕЛТА СПОРТ
+              МЫ В СЕТИ
             </Typography>
           </Link>
         </ListItem>

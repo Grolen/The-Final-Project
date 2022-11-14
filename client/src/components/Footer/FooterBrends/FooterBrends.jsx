@@ -8,7 +8,7 @@ const FooterBrends = () => {
     <Box
       sx={{
         display: 'flex',
-        // justifyContent: 'space-around',
+        justifyContent: 'space-around',
         backgroundColor: '#000000',
         alignItems: 'flex-start',
       }}
