@@ -7,6 +7,7 @@ import ErrorComponent from '../UI/ErrorComponent/ErrorComponent'
 import { fetchCards } from '../../redux/reducers/cardsReducer/ActionCreators'
 import DropDown from '../DropDown/DropDown'
 // import Headline from '../UI/Headline/Headline'
+import styles from './CardList.module.scss'
 
 const names = [
   'Oliver Hansen',
@@ -29,6 +30,7 @@ const CardList = () => {
     (state) => state.cardsReducer
   )
 
+  console.log(cards)
   useEffect(() => {
     dispatch(fetchCards())
   }, [])
@@ -41,30 +43,33 @@ const CardList = () => {
         <DropDown forInputLabel="Size" names={sizes} />
         <DropDown forInputLabel="Price" names={prices} />
       </div>
-      {cardsLoading && <Preloader />}
-      {cardsError && <ErrorComponent error={cardsError} />}
-      {cards.map((card) => {
-        const {
-          quantity,
-          enabled,
-          brand,
-          name,
-          currentPrice,
-          categories,
-          imageUrls,
-          id,
-        } = card
-        const props = {
-          brand,
-          name,
-          currentPrice,
-          categories,
-          imageUrls,
-          quantity,
-          enabled,
-        }
-        return <ActualCard key={id} {...props} />
-      })}
+      <div className={styles.containerCards}>
+        {cardsLoading && <Preloader />}
+        {cardsError && <ErrorComponent error={cardsError} />}
+        {cards.map((card) => {
+          const {
+            quantity,
+            enabled,
+            brand,
+            name,
+            currentPrice,
+            categories,
+            imageUrls,
+            id,
+            myCustomParam,
+          } = card
+          const props = {
+            brand,
+            name,
+            currentPrice,
+            categories,
+            imageUrls,
+            quantity,
+            enabled,
+          }
+          return <ActualCard key={id} {...props} />
+        })}
+      </div>
     </div>
   )
 }
