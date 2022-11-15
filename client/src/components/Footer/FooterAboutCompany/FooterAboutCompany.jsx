@@ -13,7 +13,7 @@ const FooterAboutCompany = () => {
         backgroundColor: '#000000',
       }}
     >
-      <List>
+      <List sx={{ paddingTop: 0 }}>
         <ListItem disablePadding={true}>
           <Link to="/#" style={{ textDecoration: 'none' }}>
             <Typography variant="h3" sx={footerAboutCompanyStyles.h4}>

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Box, Typography, ListItem, List } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Box, Typography, ListItem, List, Grid } from '@mui/material'
 import footerContactsStyles from './Style'
 import InstagramComponent from './images/Instagram'
+import FacebookComponent from './images/Facebook'
 
 const FooterContacts = () => {
   return (
@@ -10,38 +10,24 @@ const FooterContacts = () => {
       sx={{
         backgroundColor: 'white',
         display: 'flex',
-        justifyContent: 'space-around',
-        backgroundColor: '#000000',
+        width: 140,
+        textAlign: 'center',
+        backgroundColor: '#0000',
       }}
     >
-      <List>
-        <ListItem disablePadding={true}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
-            <Typography variant="h3" sx={footerContactsStyles.h4}>
-              ДЕЛТА СПОРТ
-            </Typography>
-          </Link>
-        </ListItem>
-        <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
-            <Typography variant="h5" sx={footerContactsStyles.p}>
-              Оплата
-            </Typography>
-          </Link>
-        </ListItem>
-        <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
-            <Typography variant="h5" sx={footerContactsStyles.p}>
-              FFFFFFFFf
-            </Typography>
-          </Link>
-        </ListItem>
-        <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
-            <InstagramComponent />
-          </Link>
-        </ListItem>
-      </List>
+      <Grid container spacing={3} sx={{ margin: 'none' }}>
+        <Grid item xl={12}>
+          <Typography variant="h3" sx={footerContactsStyles.h4}>
+            ДЕЛТА СПОРТ
+          </Typography>
+        </Grid>
+        <Grid item xl={6}>
+          <InstagramComponent />
+        </Grid>
+        <Grid item xl={6}>
+          <FacebookComponent />
+        </Grid>
+      </Grid>
     </Box>
   )
 }

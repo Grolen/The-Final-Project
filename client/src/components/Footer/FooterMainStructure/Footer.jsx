@@ -15,14 +15,15 @@ const Footer = () => {
         height: '100vh',
       }}
     >
-      <Box
-        sx={{
-          width: '100vw',
+      <div
+        style={{
+          width: '100%',
           maxHeight: 410,
           height: '100vh',
           backgroundColor: '#000000',
           display: 'flex',
-          justifyContent: 'space-around',
+          flexDirection: 'column',
+          justifyContent: 'center',
           overflow: 'hidden',
         }}
       >
@@ -30,22 +31,22 @@ const Footer = () => {
           container
           spacing={3}
           justifyContent="space-evenly"
-          alignItems="center"
+          alignItems="start"
         >
-          <Grid item xs={3}>
+          <Grid item xs="auto" justify="center" alignItems="center">
             <FooterAboutCompany />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs="auto" justify="center" alignItems="center">
             <FooterHelpInfo />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs="auto" justify="center" alignItems="center">
             <FooterBrends />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs="auto" justify="center" alignItems="center">
             <FooterContacts />
           </Grid>
         </Grid>
-      </Box>
+      </div>
       <FooterShopInfo />
     </Box>
   )
