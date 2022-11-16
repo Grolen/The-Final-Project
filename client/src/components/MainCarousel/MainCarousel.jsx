@@ -8,7 +8,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 const MainCarousel = () => {
   var items = [
     {
-      image: 'https://klike.net/uploads/posts/2019-05/1556708032_1.jpg',
+      image: '#',
     },
     {
       image:
@@ -45,6 +45,7 @@ const MainCarousel = () => {
           <CarouselItem key={i} item={item} />
         ))}
       </Carousel>
+      <div></div>
     </Container>
   )
 }
