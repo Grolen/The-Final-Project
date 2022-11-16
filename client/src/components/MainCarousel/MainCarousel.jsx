@@ -4,6 +4,7 @@ import CarouselItem from '../CarouselItem/CarouselItem'
 import { Container } from '@mui/system'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import axios from 'axios'
 
 const MainCarousel = () => {
   var items = [
