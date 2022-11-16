@@ -1,24 +1,28 @@
-import React from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import cardIdReducer from '../redux/reducers/cardIdReducer/CardIdReducer'
-// import { useNavigate, useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useLoading } from '../hooks/useLoading'
+import ProductService from '../API/ProductService'
 import Preloader from '../components/Preloader/Preloader'
-// import setCurrentCard from '../redux/reducers/currentCardReducer'
+import ErrorComponent from '../components/UI/ErrorComponent/ErrorComponent'
 
 const CardIdPage = () => {
-  //  useEffect(() => {
-  //  dispatch(findOneCard(params.id))
-  // }, [])
+  const params = useParams()
+  const [card, setCard] = useState({})
+  const [gertCard, isCardLoading, cardError] = useLoading(
+    async (myCustomParam) => {
+      const response = await ProductService.getProductsById(myCustomParam)
+      setCard(response.data)
+    }
+  )
 
-  // const redirectToCard = () => {
-  //   dispatch(setCurrentCard(card))
-  //  navigate(`/list/${card.id}`)
-  // }
+  useEffect(() => {
+    gertCard(params.myCustomParam)
+  }, [])
 
   return (
     <div>
-      {/*<h1> The page with ID = {params.id} </h1>*/}
-      {/*{isCardLoading ? <Preloader /> : <div>This is CardIdPage</div>}*/}
+      <h1>Opened card with myCustomParam = {params.myCustomParam}</h1>
+      {isCardLoading ? <Preloader /> : <div>This is CardIdPage</div>}
     </div>
   )
 }

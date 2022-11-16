@@ -1,11 +1,11 @@
-// import axios from 'axios'
+import axios from 'axios'
 
-// export default class ProductService {
-//   static async getProducts() {
-//     const response = await axios.get('/api/products/filter')
-//     return response
-//   }
-// }
+export default class ProductService {
+  static async getProductsById(myCustomParam) {
+    const response = await axios.get(`/api/products/${myCustomParam}`)
+    return response
+  }
+}
 
 // const response = await axios.post('/api/products', {
 //   headers: { Authorization: `Bearer ${TOKEN}` },
