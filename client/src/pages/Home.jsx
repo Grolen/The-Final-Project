@@ -1,5 +1,9 @@
 import Button from '../components/Button/Button'
 import React from 'react'
+import Footer from '../components/Footer/FoterMainStructure/Footer'
+import MainPageImages from '../components/MainPageImages/MainPageImages'
+import Header from '../components/Header/Header'
+import MainCarousel from '../components/MainCarousell/MainCarousell'
 
 const Home = () => {
   const mainButton = {
@@ -34,10 +38,12 @@ const Home = () => {
         margin: '20px',
       }}
     >
+      <Header />
       Home Page!!!
-      <Button buttonContent={mainButton} title="КУПИТь" />
-      <Button buttonContent={blackBGButton} title="ДОБАВИТЬ В КОРЗИНУ" />
-      <Button buttonContent={greyBGButton} title="ВЕРНУТЬСЯ В КОРЗИНУ" />
+      <MainCarousel />
+      <MainPageImages />
+      <MainCarousel />
+      <Footer />
     </div>
   )
 }
