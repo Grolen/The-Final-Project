@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, Typography, ListItem, List } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Box, Typography, ListItem, List, Link } from '@mui/material'
 import footerHelpInfoStyles from './Style'
 
 const FooterHelpInfo = () => {
@@ -15,28 +14,28 @@ const FooterHelpInfo = () => {
     >
       <List sx={{ paddingTop: 0 }}>
         <ListItem disablePadding={true}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
+          <Link href="#" sx={{ textDecoration: 'none' }}>
             <Typography variant="h3" sx={footerHelpInfoStyles.h4}>
-              ДЕЛТА СПОРТ
+              ПОМОЩЬ
             </Typography>
           </Link>
         </ListItem>
         <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
+          <Link href="#" sx={{ textDecoration: 'none' }}>
             <Typography variant="h5" sx={footerHelpInfoStyles.p}>
               Оплата
             </Typography>
           </Link>
         </ListItem>
         <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
+          <Link href="#" sx={{ textDecoration: 'none' }}>
             <Typography variant="h5" sx={footerHelpInfoStyles.p}>
               Доставка
             </Typography>
           </Link>
         </ListItem>
         <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
+          <Link href="#" sx={{ textDecoration: 'none' }}>
             <Typography variant="h5" sx={footerHelpInfoStyles.p}>
               Возврат
             </Typography>

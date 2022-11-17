@@ -1,6 +1,6 @@
-const footerHelpInfoStyles = {
+const footerMobileVersionStyles = {
   h4: {
-    fontSize: '1.25rem',
+    fontSize: '1.1rem',
     fontStyle: 'Regular',
     textAlign: 'center',
     fonWeight: '400',
@@ -8,12 +8,9 @@ const footerHelpInfoStyles = {
     color: '#00FF38',
     textTransform: 'uppercase',
     cursorPointer: 'none',
-    '@media (max-width: 900px)': {
-      fontSize: '1.0rem',
-    },
   },
   p: {
-    fontSize: '1.25rem',
+    fontSize: '1.1rem',
     fontStyle: 'Regular',
     textAlign: 'center',
     fonWeight: '400',
@@ -22,10 +19,13 @@ const footerHelpInfoStyles = {
     '&:hover': {
       color: '#FFFFFF',
     },
-    '@media (max-width: 900px)': {
-      fontSize: '1.0rem',
+    Box: {
+      width: '100%',
+      maxHeight: '500px',
+      height: '100vh',
+      backgroundColor: '#000000',
     },
   },
 }
 
-export default footerHelpInfoStyles
+export default footerMobileVersionStyles

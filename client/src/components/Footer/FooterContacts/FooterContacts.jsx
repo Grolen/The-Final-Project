@@ -8,26 +8,36 @@ const FooterContacts = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'white',
         display: 'flex',
-        width: 140,
-        textAlign: 'center',
-        backgroundColor: '#0000',
+        justifyContent: 'space-around',
+        backgroundColor: '#000000',
       }}
     >
-      <Grid container spacing={3} sx={{ margin: 'none' }}>
-        <Grid item xl={12}>
-          <Typography variant="h3" sx={footerContactsStyles.h4}>
-            ДЕЛТА СПОРТ
-          </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          width: '140px',
+        }}
+      >
+        <Grid container spacing={2} sx={{ margin: 'none' }}>
+          <Grid item xl={12} md={12} sx={{ paddingBottom: '32px' }}>
+            <Typography variant="h3" sx={footerContactsStyles.h4}>
+              МЫ В СЕТИ
+            </Typography>
+          </Grid>
+          <Grid item lg={6} md={6}>
+            <a href="#" target="blank">
+              <InstagramComponent />
+            </a>
+          </Grid>
+          <Grid item lg={6} md={6}>
+            <a href="#" target="blank">
+              <FacebookComponent />
+            </a>
+          </Grid>
         </Grid>
-        <Grid item xl={6}>
-          <InstagramComponent />
-        </Grid>
-        <Grid item xl={6}>
-          <FacebookComponent />
-        </Grid>
-      </Grid>
+      </Box>
     </Box>
   )
 }

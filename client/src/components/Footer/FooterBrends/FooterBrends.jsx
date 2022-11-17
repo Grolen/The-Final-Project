@@ -14,33 +14,32 @@ const FooterBrends = () => {
     <Box
       sx={{
         display: 'flex',
-        // justifyContent: 'space-around',
         backgroundColor: '#000000',
         alignItems: 'flex-start',
       }}
     >
-      <Grid container spacing={1}>
-        <Grid item xl={12}>
+      <Grid container spacing={0}>
+        <Grid item lg={12} md={12} sm={12} sx={{ paddingBottom: '32px' }}>
           <Typography variant="h3" sx={footerBrendStyles.h4}>
             БРЕНДЫ
           </Typography>
         </Grid>
-        <Grid item xs="4" style={{ textAlign: 'center' }}>
+        <Grid item lg={4} md={4} sm={6} style={{ textAlign: 'center' }}>
           <AdidasComponent />
         </Grid>
-        <Grid item xs="4" style={{ textAlign: 'center' }}>
+        <Grid item lg={4} md={4} sm={6} style={{ textAlign: 'center' }}>
           <NikeComponent />
         </Grid>
-        <Grid item xs="4" style={{ textAlign: 'center' }}>
+        <Grid item lg={4} md={4} sm={6} style={{ textAlign: 'center' }}>
           <VansComponent />
         </Grid>
-        <Grid item xs="4" style={{ textAlign: 'center' }}>
+        <Grid item lg={4} md={4} sm={6} style={{ textAlign: 'center' }}>
           <PumaComponent />
         </Grid>
-        <Grid item xs="4" style={{ textAlign: 'center' }}>
+        <Grid item lg={4} md={4} sm={6} style={{ textAlign: 'center' }}>
           <NewBalanceComponent />
         </Grid>
-        <Grid item xs="4" style={{ textAlign: 'center' }}>
+        <Grid item lg={4} md={4} sm={6} style={{ textAlign: 'center' }}>
           <JordanBrandComponent />
         </Grid>
       </Grid>
