@@ -1,47 +1,43 @@
 import React from 'react'
-import { Box, Typography, ListItem, List } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Box, Typography, ListItem, List, Grid } from '@mui/material'
 import footerContactsStyles from './Style'
 import InstagramComponent from './images/Instagram'
+import FacebookComponent from './images/Facebook'
 
 const FooterContacts = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'white',
         display: 'flex',
         justifyContent: 'space-around',
         backgroundColor: '#000000',
       }}
     >
-      <List>
-        <ListItem disablePadding={true}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          width: '140px',
+        }}
+      >
+        <Grid container spacing={2} sx={{ margin: 'none' }}>
+          <Grid item xl={12} md={12} sx={{ paddingBottom: '32px' }}>
             <Typography variant="h3" sx={footerContactsStyles.h4}>
-              ДЕЛТА СПОРТ
+              МЫ В СЕТИ
             </Typography>
-          </Link>
-        </ListItem>
-        <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
-            <Typography variant="h5" sx={footerContactsStyles.p}>
-              Оплата
-            </Typography>
-          </Link>
-        </ListItem>
-        <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
-            <Typography variant="h5" sx={footerContactsStyles.p}>
-              FFFFFFFFf
-            </Typography>
-          </Link>
-        </ListItem>
-        <ListItem disablePadding={true} sx={{ pt: 4 }}>
-          <Link to="/#" style={{ textDecoration: 'none' }}>
-            <InstagramComponent />
-          </Link>
-        </ListItem>
-      </List>
+          </Grid>
+          <Grid item lg={6} md={6}>
+            <a href="#" target="blank">
+              <InstagramComponent />
+            </a>
+          </Grid>
+          <Grid item lg={6} md={6}>
+            <a href="#" target="blank">
+              <FacebookComponent />
+            </a>
+          </Grid>
+        </Grid>
+      </Box>
     </Box>
   )
 }
