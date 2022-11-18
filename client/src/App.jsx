@@ -11,20 +11,10 @@ function App() {
   const { token, logout, login, ready } = useAuth()
   const isAuthenticated = !!token
   return (
-    <AuthContext.Provider
-      value={{
-        token,
-        login,
-        logout,
-        isAuthenticated,
-        ready,
-      }}
-    >
-      <div className="text-bg-info">
-        {isAuthenticated && <NavigatePanel startFrom="Home" />}
-        <AppRouter />
-      </div>
-    </AuthContext.Provider>
+    <div className="text-bg-info">
+      <AppRouter />
+      <Preloader />
+    </div>
   )
 }
 
