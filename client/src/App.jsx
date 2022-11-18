@@ -1,5 +1,6 @@
 import React from 'react'
 import AppRouter from './components/AppRouter'
+import Footer from './components/Footer/FooterMainStructure/Footer.jsx'
 import NavigatePanel from './components/NavigatePanel/NavigatePanel'
 import CardList from './components/CardList/CardList'
 import { useAuth } from './hooks/useAuth'
@@ -13,7 +14,8 @@ function App() {
   return (
     <div className="text-bg-info">
       <AppRouter />
-      <Preloader />
+      <Preloader /> 
+      <Footer />
     </div>
   )
 }
