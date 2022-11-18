@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import MainCarousel from '../components/Carousel/MainCarousel'
 
 const Home = () => {
