@@ -1,15 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 // import thunk from 'redux-thunk'
-export const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzI3YWYwY2RjZTFiMjBhNGQ1NTIwYyIsImZpcnN0TmFtZSI6IllhIiwibGFzdE5hbWUiOiJPbiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Njg0NDg0MDksImV4cCI6MTY2ODQ4NDQwOX0.3ZQWQjPIHeGcPO5vjkihmnTLzkdCCIAZ17sd93Dnte4'
 
 export const fetchCards = createAsyncThunk(
   'cards/fetchAll',
-  async (_, thunkAPI) => {
+  async (_, thunkAPI, perPage = 3, startPage = 1) => {
     try {
-      const response = await axios.get('/api/products', {
-        headers: { Authorization: `Bearer ${TOKEN}` },
+      // let perPage = 3
+      // let startPage = 1
+      let url = `/api/products?perPage=${perPage}&startPage=${startPage}`
+      const response = await axios.get(url, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       return response.data
     } catch (e) {
@@ -17,3 +18,6 @@ export const fetchCards = createAsyncThunk(
     }
   }
 )
+
+// `/api/products/filter/?sort=+currentPrice`
+//   /api/products

@@ -4,9 +4,11 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
-import styles from './CardSmaller.module.scss'
 import PropTypes from 'prop-types'
-import ActualCard from '../ActualCard/ActualCard'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import { useDispatch, useSelector } from 'react-redux'
+// import ActualCard from '../ActualCard/ActualCard'
+import styles from './CardSmaller.module.scss'
 
 const CardSmaller = (props) => {
   const {
@@ -18,7 +20,13 @@ const CardSmaller = (props) => {
     imageUrls,
     name,
     redirectToCard,
+    card,
+    myCustomParam,
   } = props
+
+  const addItemsToFav = (event) => {
+    event.stopPropagation()
+  }
 
   return (
     <div onClick={redirectToCard} className={styles.container}>
@@ -31,6 +39,7 @@ const CardSmaller = (props) => {
             alt="green iguana"
           />
           <CardContent>
+            <FavoriteBorderIcon onClick={addItemsToFav} />
             <Typography gutterBottom variant="h5" component="div">
               {name} {categories}
             </Typography>
@@ -50,6 +59,10 @@ CardSmaller.propTypes = {
   categories: PropTypes.string.isRequired,
   imageUrls: PropTypes.array.isRequired,
   isCardsLoading: PropTypes.bool.isRequired,
+  enabled: PropTypes.bool.isRequired,
+  quantity: PropTypes.number.isRequired,
+  view: PropTypes.bool.isRequired,
+  myCustomParam: PropTypes.string.isRequired,
 }
 
 CardSmaller.defaultProps = {

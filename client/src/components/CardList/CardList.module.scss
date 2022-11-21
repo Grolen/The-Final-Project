@@ -5,3 +5,12 @@
   grid-gap: 10px;
 }
 
+.cardListContainer {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-around;
+}
+
+.cardList {
+  margin-top: 20px;
+}

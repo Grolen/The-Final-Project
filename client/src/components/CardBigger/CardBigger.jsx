@@ -42,7 +42,7 @@ const CardBigger = (props) => {
             <figure>
               <img
                 src={`${imageUrls[1]}`}
-                srcSet="https://images.unsplash.com/photo-1515825838458-f2a94b20105a?auto=format&fit=crop&w=300&dpr=2 2x"
+                // srcSet="https://images.unsplash.com/photo-1515825838458-f2a94b20105a?auto=format&fit=crop&w=300&dpr=2 2x"
                 loading="lazy"
                 alt="trainers"
               />
@@ -142,6 +142,10 @@ CardBigger.propTypes = {
   categories: PropTypes.string.isRequired,
   imageUrls: PropTypes.array.isRequired,
   isCardsLoading: PropTypes.bool.isRequired,
+  enabled: PropTypes.bool.isRequired,
+  quantity: PropTypes.number.isRequired,
+  view: PropTypes.bool.isRequired,
+  myCustomParam: PropTypes.string.isRequired,
 }
 
 CardBigger.defaultProps = {

@@ -4,6 +4,7 @@ import ProductList from '../pages/ProductList/ProductList'
 import ProductDetails from '../pages/ProductDetails'
 import CartPage from '../pages/CartPage'
 import CardIdPage from '../pages/CardIdPage'
+import WishList from '../pages/WishList/WishList'
 
 export const privateRoutes = [
   { path: '/', element: Home },
@@ -11,6 +12,7 @@ export const privateRoutes = [
   { path: '/details', element: ProductDetails },
   { path: '/cart', element: CartPage },
   { path: '/list/:myCustomParam', element: CardIdPage },
+  { path: '/wishlist', element: WishList },
 ]
 
 export const publicRoutes = [{ path: '/login', element: LoginPage }]

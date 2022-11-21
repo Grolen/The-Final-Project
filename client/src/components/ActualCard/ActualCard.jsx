@@ -8,11 +8,11 @@ import ProductService from '../../API/ProductService'
 
 const ActualCard = (props) => {
   const navigate = useNavigate()
-  const [card, setCard] = useState({})
+  const [actualCard, setActualCard] = useState({})
   const [getCard, isCardLoading, cardError] = useLoading(
     async (myCustomParam) => {
       const response = await ProductService.getProductsById(myCustomParam)
-      setCard(response.data)
+      setActualCard(response.data)
     }
   )
   const {
@@ -25,6 +25,7 @@ const ActualCard = (props) => {
     imageUrls,
     name,
     myCustomParam,
+    card,
   } = props
 
   const redirectToCard = () => {
@@ -48,6 +49,11 @@ ActualCard.propTypes = {
   categories: PropTypes.string.isRequired,
   imageUrls: PropTypes.array.isRequired,
   isCardsLoading: PropTypes.bool.isRequired,
+  card: PropTypes.object.isRequired,
+  enabled: PropTypes.bool.isRequired,
+  quantity: PropTypes.number.isRequired,
+  view: PropTypes.bool.isRequired,
+  myCustomParam: PropTypes.string.isRequired,
 }
 
 ActualCard.defaultProps = {

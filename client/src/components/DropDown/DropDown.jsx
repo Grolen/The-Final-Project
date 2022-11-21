@@ -1,58 +1,50 @@
 import React, { useState } from 'react'
-import OutlinedInput from '@mui/material/OutlinedInput'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import ListItemText from '@mui/material/ListItemText'
 import Select from '@mui/material/Select'
-import Checkbox from '@mui/material/Checkbox'
+import PropTypes from 'prop-types'
 
-const ITEM_HEIGHT = 48
-const ITEM_PADDING_TOP = 8
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-}
-
-const DropDown = ({ forInputLabel, names }) => {
-  const [personName, setPersonName] = useState([])
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event
-    setPersonName(typeof value === 'string' ? value.split(',') : value)
-  }
+const DropDown = ({ labelFor, onChange, value, values }) => {
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">
-          {forInputLabel}
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 250 }}>
+        <InputLabel id="demo-simple-select-standard-label">
+          {labelFor}
         </InputLabel>
         <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={value}
+          onChange={onChange}
+          label="Age"
         >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
+          <MenuItem value="labelFor">
+            <em>{labelFor}</em>
+          </MenuItem>
+          {values.map((value) => {
+            return (
+              <MenuItem key={value} value={value}>
+                {value}
+              </MenuItem>
+            )
+          })}
         </Select>
       </FormControl>
     </div>
   )
+}
+
+DropDown.propTypes = {
+  labelFor: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  values: PropTypes.array.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
+
+DropDown.defaultProps = {
+  labelFor: 'Sort By',
+  values: [],
 }
 
 export default DropDown

@@ -10,7 +10,11 @@ const initialState = {
 export const CardsSlice = createSlice({
   name: 'cards',
   initialState,
-  reducers: {},
+  reducers: {
+    addCards: (state, action) => {
+      state.cards.push(action.payload)
+    },
+  },
   extraReducers: {
     [fetchCards.fulfilled.type]: (state, action) => {
       state.cardsLoading = false
@@ -27,4 +31,5 @@ export const CardsSlice = createSlice({
   },
 })
 
+export const { addCards } = CardsSlice.actions
 export default CardsSlice.reducer
