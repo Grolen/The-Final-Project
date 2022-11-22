@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useLoading } from '../hooks/useLoading'
 import ProductService from '../API/ProductService'
 import Preloader from '../components/Preloader/Preloader'
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
 import ErrorComponent from '../components/UI/ErrorComponent/ErrorComponent'
 
 const CardIdPage = () => {
@@ -21,6 +22,7 @@ const CardIdPage = () => {
 
   return (
     <div>
+      <Breadcrumb />
       <h1>Opened card with myCustomParam = {params.myCustomParam}</h1>
       {isCardLoading ? <Preloader /> : <div>This is CardIdPage</div>}
     </div>
