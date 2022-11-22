@@ -11,10 +11,12 @@ const MainCarousel = () => {
     {
       image:
         'https://media.discordapp.net/attachments/1043545360498442271/1043545432682401853/Rectangle_7.jpg',
+      alt: `news`,
     },
     {
       image:
         'https://media.discordapp.net/attachments/1043545360498442271/1043545433013760080/Rectangle_76.jpg',
+      alt: `news`,
     },
   ]
 
