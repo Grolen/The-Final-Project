@@ -14,17 +14,15 @@ import styles from './CardBigger.module.scss'
 
 const CardBigger = (props) => {
   const {
-    enabled,
-    quantity,
     brand,
     currentPrice,
     categories,
     imageUrls,
     name,
-    myCustomParam,
     redirectToCard,
+    itemNo,
   } = props
-
+  console.log('brand: ', brand)
   return (
     <div className={styles.cardBigger}>
       <Card
@@ -40,12 +38,7 @@ const CardBigger = (props) => {
         <Box sx={{ position: 'relative' }}>
           <AspectRatio ratio="4/3">
             <figure>
-              <img
-                src={`${imageUrls[1]}`}
-                // srcSet="https://images.unsplash.com/photo-1515825838458-f2a94b20105a?auto=format&fit=crop&w=300&dpr=2 2x"
-                loading="lazy"
-                alt="trainers"
-              />
+              <img src={`${imageUrls[1]}`} loading="lazy" alt="trainers" />
             </figure>
           </AspectRatio>
           <CardCover

@@ -5,7 +5,8 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import PropTypes from 'prop-types'
 
-const DropDown = ({ labelFor, onChange, value, values }) => {
+const DropDown = (dropDownProps) => {
+  const { labelFor, value, onChange, values } = dropDownProps
   return (
     <div>
       <FormControl variant="standard" sx={{ m: 1, minWidth: 250 }}>

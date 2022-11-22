@@ -11,7 +11,7 @@ export const privateRoutes = [
   { path: '/list', element: ProductList },
   { path: '/details', element: ProductDetails },
   { path: '/cart', element: CartPage },
-  { path: '/list/:myCustomParam', element: CardIdPage },
+  { path: '/list/:itemNo', element: CardIdPage },
   { path: '/wishlist', element: WishList },
 ]
 

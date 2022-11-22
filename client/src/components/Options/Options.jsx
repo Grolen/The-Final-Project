@@ -1,16 +1,18 @@
 import React from 'react'
-import styles from './Options.module.scss'
 import PropTypes from 'prop-types'
-// import CardSmaller from '../CardSmaller/CardSmaller'
+import styles from './Options.module.scss'
 
-const Options = ({ sizeFirst, sizeSecond, changeCardSize }) => {
+const Options = (props) => {
+  const { sizeFirst, sizeSecond, changeOnSmaller, changeOnBigger, product } =
+    props
   return (
     <div className={styles.containerForSize}>
+      <div className={styles.container}> {product} </div>
       <span> view </span>
-      <span className={styles.sizeChanger} onClick={changeCardSize}>
+      <span className={styles.sizeChanger} onClick={changeOnSmaller}>
         {sizeFirst}
       </span>
-      <span className={styles.sizeChanger} onClick={changeCardSize}>
+      <span className={styles.sizeChanger} onClick={changeOnBigger}>
         {sizeSecond}
       </span>
     </div>
@@ -21,11 +23,13 @@ Options.propTypes = {
   sizeFirst: PropTypes.number.isRequired,
   sizeSecond: PropTypes.number.isRequired,
   changeCardSize: PropTypes.func.isRequired,
+  product: PropTypes.string.isRequired,
 }
 
 Options.defaultProps = {
   sizeFirst: 2,
   sizeSecond: 4,
+  product: 'women',
 }
 
 export default Options

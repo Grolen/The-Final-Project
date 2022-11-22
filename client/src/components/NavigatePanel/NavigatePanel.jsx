@@ -19,7 +19,7 @@ const NavigatePanel = ({ startFrom }) => {
         const routeTo = `/${pathNames.slice(0, index + 1).join('/')}`
         const isLast = index === pathNames.length - 1
         return isLast ? (
-          <Typography>{pathname}</Typography>
+          <Typography key={pathname}>{pathname}</Typography>
         ) : (
           <Link
             style={{ cursor: 'pointer' }}

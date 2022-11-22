@@ -1,59 +1,68 @@
 import React, { useEffect, useState } from 'react'
 import CardList from '../../components/CardList/CardList'
-// import DropDown from '../../components/DropDown/DropDown'
 import Options from '../../components/Options/Options'
-import { useDispatch, useSelector } from 'react-redux'
-// import { fetchCards } from '../../redux/reducers/cardsReducer/ActionCreators'
-// import axios from 'axios'
-// import { addCards } from '../../redux/reducers/cardsReducer/CardsSlice'
-import { fetchFilteredCards } from '../../redux/reducers/filteredCardsReducer/ActionCreator'
-// import filteredCardsReducer from '../../redux/reducers/filteredCardsReducer/filteredCards'
-// import Selected from '../../components/Selected/Selected'
-import { fetchCards } from '../../redux/reducers/cardsReducer/ActionCreators'
-// import axios from 'axios'
-// import filteredCards from '../../redux/reducers/filteredCardsReducer/filteredCards'
-// import { fetchFilteredCards } from '../../redux/reducers/filteredCardsReducer/ActionCreator'
-// import filteredCardsReducer from '../../redux/reducers/filteredCardsReducer/filteredCards'
+import { useLoading } from '../../hooks/useLoading'
+import ProductService from '../../API/ProductService'
+import DropDown from '../../components/DropDown/DropDown'
 import styles from './ProductList.module.scss'
+import { useLoadCards } from '../../hooks/useLoadCards'
 
 const ProductList = () => {
-  // for 2 or 4 scope
-  const [view, setView] = useState(false)
-  // const [sort, setSort] = useState('name')
+  const {
+    view,
+    cards,
+    setCards,
+    sort,
+    startPage,
+    setStartPage,
+    hasMore,
+    setHasMore,
+    handleChange,
+    changeOnSmaller,
+    changeOnBigger,
+  } = useLoadCards()
 
-  const dispatch = useDispatch()
-  const { cards, cardsLoading, cardsError } = useSelector(
-    (state) => state.cardsReducer
-  )
+  const [getCards, isCardsLoading, cardsError] = useLoading(async () => {
+    const { products, productsQuantity } =
+      await ProductService.getProductsBySomeParams(3, startPage, sort)
+    setCards([...cards, ...products])
+    console.log('productsQuantity: ', productsQuantity)
+    setStartPage(startPage + 1)
+    if (!products.length) setHasMore(false)
+  })
 
   useEffect(() => {
-    dispatch(fetchCards())
-  }, [])
+    getCards(sort)
+  }, [sort])
 
-  const changeCardSize = () => {
-    setView(!view)
+  const props = {
+    sizeFirst: 2,
+    sizeSecond: 4,
+    changeOnSmaller,
+    changeOnBigger,
+    product: 'men',
   }
-
-  // console.log(typeof cards)
-  // console.log(Array.isArray(cards))
-  // const values = ['name', 'currentPrice', 'brand']
+  const cardListProps = {
+    cards: cards,
+    cardsLoading: isCardsLoading,
+    cardsError: cardsError,
+    getCards: getCards,
+    view: view,
+    hasMore: hasMore,
+  }
+  const values = ['name', 'currentPrice', 'quantity']
+  const dropDownProps = {
+    labelFor: 'Sort By',
+    value: sort,
+    onChange: handleChange,
+    values: values,
+  }
 
   return (
     <div className={styles.containerList}>
-      <CardList
-        cards={cards}
-        cardsLoading={cardsLoading}
-        cardsError={cardsError}
-        view={view}
-      />
-      <Options sizeFirst={2} sizeSecond={4} changeCardSize={changeCardSize} />
-      {/*<DropDown*/}
-      {/*  labelFor="Sort By"*/}
-      {/*  value={age}*/}
-      {/*  onChange={handleChange}*/}
-      {/*  values={values}*/}
-      {/*/>*/}
-      {/*<Selected value={sort} onChange={(e) => setSort(e.target.value)} />*/}
+      <CardList {...cardListProps} />
+      <Options {...props} />
+      <DropDown {...dropDownProps} />
     </div>
   )
 }

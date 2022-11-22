@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import MainCarousel from '../components/Carousel/MainCarousel'
+import Footer from '../components/Footer/FooterMainStructure/Footer'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       }}
     >
       <MainCarousel />
+      <Footer />
     </div>
   )
 }

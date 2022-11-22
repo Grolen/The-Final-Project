@@ -5,35 +5,23 @@ import CardSmaller from '../CardSmaller/CardSmaller'
 import CardBigger from '../CardBigger/CardBigger'
 import { useLoading } from '../../hooks/useLoading'
 import ProductService from '../../API/ProductService'
+import styles from './ActualCard.module.scss'
 
 const ActualCard = (props) => {
   const navigate = useNavigate()
   const [actualCard, setActualCard] = useState({})
-  const [getCard, isCardLoading, cardError] = useLoading(
-    async (myCustomParam) => {
-      const response = await ProductService.getProductsById(myCustomParam)
-      setActualCard(response.data)
-    }
-  )
-  const {
-    view,
-    enabled,
-    quantity,
-    brand,
-    currentPrice,
-    categories,
-    imageUrls,
-    name,
-    myCustomParam,
-    card,
-  } = props
+  const [getCard, isCardLoading, cardError] = useLoading(async (itemNo) => {
+    const response = await ProductService.getProductsById(itemNo)
+    setActualCard(response.data)
+  })
+  const { view, itemNo } = props
 
   const redirectToCard = () => {
-    navigate(`/list/${myCustomParam}`)
+    navigate(`/list/${itemNo}`)
   }
 
   return (
-    <div>
+    <div className={styles.cards}>
       {view ? (
         <CardBigger {...props} redirectToCard={redirectToCard} />
       ) : (

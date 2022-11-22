@@ -1,34 +1,25 @@
-import React, { useEffect, useState } from 'react'
-// import { useFetching } from '../../hooks/useFetching'
+import React from 'react'
 import ActualCard from '../ActualCard/ActualCard'
-import axios from 'axios'
 import Preloader from '../Preloader/Preloader'
-//import { useDispatch, useSelector } from 'react-redux'
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent'
-// import { fetchCards } from '../../redux/reducers/cardsReducer/ActionCreators'
-// import DropDown from '../DropDown/DropDown'
-// import Headline from '../UI/Headline/Headline'
 import PropTypes from 'prop-types'
-// import Headline from '../UI/Headline/Headline'
-// import DropDown from '../DropDown/DropDown'
-// import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroll-component'
-// import { fetchCards } from '../../redux/reducers/cardsReducer/ActionCreators'
+import Message from '../UI/Message/Message'
+import DropDown from '../DropDown/DropDown'
 import styles from './CardList.module.scss'
 
 // const sizes = [38, 39, 40, 41, 42]
 
-const CardList = ({ view, cards, cardsLoading, cardsError }) => {
-  const dispatch = useDispatch()
+const CardList = (cardListProps) => {
+  const { view, cards, cardsLoading, cardsError, hasMore, getCards } =
+    cardListProps
   const names = cards.map((card) => {
     return card.name
   })
-  // no sizes in DB
 
-  // const sizes = cards.map((card) => {
-  //   return card.name
-  // })
+  const quantities = cards.map((card) => {
+    return card.quantity
+  })
 
   const prices = cards.map((card) => {
     return card.currentPrice
@@ -38,22 +29,18 @@ const CardList = ({ view, cards, cardsLoading, cardsError }) => {
   return (
     <div className={styles.cardListContainer}>
       <div className={styles.cardList}>
-        <h1> Shoes </h1>
-        {/*<DropDown labelFor="Choose Brand" values={names} />*/}
-        {/*<DropDown forInputLabel="Size" names={sizes} />*/}
-        {/*<DropDown labelFor="Choose Price" values={prices} />*/}
+        <h1 className={styles.headline}> Shoes </h1>
+        <DropDown labelFor="Choose Brand" values={names} />
+        <DropDown labelFor="Choose Quantity" values={quantities} />
+        <DropDown labelFor="Choose Price" values={prices} />
       </div>
       <div className={styles.containerCards}>
         <InfiniteScroll
-          // next={}
-          hasMore={true}
-          loader={<h1> Wait to load more! </h1>}
+          next={getCards}
+          hasMore={hasMore}
+          loader={<Preloader />}
           dataLength={cards.length}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
+          endMessage={<Message text="You have seen all cards for now" />}
         >
           {cardsLoading && <Preloader />}
           {cardsError && <ErrorComponent error={cardsError} />}
@@ -66,7 +53,7 @@ const CardList = ({ view, cards, cardsLoading, cardsError }) => {
               currentPrice,
               categories,
               imageUrls,
-              myCustomParam,
+              itemNo,
             } = card
             const props = {
               view,
@@ -77,10 +64,10 @@ const CardList = ({ view, cards, cardsLoading, cardsError }) => {
               imageUrls,
               quantity,
               enabled,
-              myCustomParam,
               card,
+              itemNo,
             }
-            return <ActualCard key={myCustomParam} {...props} />
+            return <ActualCard key={itemNo} {...props} />
           })}
         </InfiniteScroll>
       </div>
@@ -93,6 +80,8 @@ CardList.propTypes = {
   cards: PropTypes.array.isRequired,
   cardsLoading: PropTypes.bool.isRequired,
   cardsError: PropTypes.string.isRequired,
+  getCards: PropTypes.func.isRequired,
+  hasMore: PropTypes.bool.isRequired,
 }
 
 CardList.defaultProps = {

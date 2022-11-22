@@ -8,20 +8,19 @@ import ErrorComponent from '../components/UI/ErrorComponent/ErrorComponent'
 const CardIdPage = () => {
   const params = useParams()
   const [card, setCard] = useState({})
-  const [gertCard, isCardLoading, cardError] = useLoading(
-    async (myCustomParam) => {
-      const response = await ProductService.getProductsById(myCustomParam)
-      setCard(response.data)
-    }
-  )
+  const [gertCard, isCardLoading, cardError] = useLoading(async (itemNo) => {
+    const response = await ProductService.getProductsById(itemNo)
+    console.log(response)
+    setCard(response.data)
+  })
 
   useEffect(() => {
-    gertCard(params.myCustomParam)
+    gertCard(params.itemNo)
   }, [])
 
   return (
     <div>
-      <h1>Opened card with myCustomParam = {params.myCustomParam}</h1>
+      <h1>Opened card with itemNo = {params.itemNo}</h1>
       {isCardLoading ? <Preloader /> : <div>This is CardIdPage</div>}
     </div>
   )
