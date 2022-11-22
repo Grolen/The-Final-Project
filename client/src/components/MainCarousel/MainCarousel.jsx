@@ -7,7 +7,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 const MainCarousel = () => {
-  var items = [
+  const items = [
     {
       image:
         'https://media.discordapp.net/attachments/1043545360498442271/1043545432682401853/Rectangle_7.jpg',
@@ -20,8 +20,28 @@ const MainCarousel = () => {
     },
   ]
 
+  const styleForBtn = {
+    margin: '25px',
+    float: 'right',
+    width: '150px',
+    height: '44px',
+    color: 'black',
+    backgroundColor: 'white',
+    boxShadow: '-3px 3px 4px #00FF38',
+    fontSize: '22px',
+    fontWeight: '700',
+    borderRadius: '0',
+    lineHeight: `22px`,
+    padding: `8px 26px`,
+    '&:hover': {
+      //you want this to be the same as the backgroundColor above
+      backgroundColor: 'white',
+    },
+  }
+
   return (
     <Container
+      maxWidth={`100%`}
       sx={{
         position: 'relative',
       }}
@@ -35,8 +55,8 @@ const MainCarousel = () => {
             color: 'black',
             opacity: 1,
             borderRadius: 0,
-            marginLeft: 100,
-            marginRight: 100,
+            marginLeft: 150,
+            marginRight: 150,
             paddingTop: 18,
             paddingBottom: 18,
             paddingLeft: 22,
@@ -56,27 +76,26 @@ const MainCarousel = () => {
       <Box
         sx={{
           position: 'absolute',
-          right: 80,
-          top: 446,
+          right: 150,
+          top: 500,
           width: 500,
           height: 250,
-          paddingLeft: 2,
           background: ' rgba(0, 0, 0, 0.25)',
           zIndex: 1,
         }}
       >
         <h1
           style={{
+            margin: `20px 0`,
+            textAlign: 'center',
             fontSize: 45,
             color: '#fff',
             textShadow: '0px 5px 4px rgba(0, 0, 0, 0.55)',
-            marginTop: 19,
-            marginBottom: 50,
           }}
         >
           НОВАЯ КОЛЛЕКЦИЯ СОВМЕСТНО В VISA
         </h1>
-        <Button></Button>
+        <Button buttonContent={styleForBtn} title={`КУПИТЬ`}></Button>
       </Box>
     </Container>
   )
