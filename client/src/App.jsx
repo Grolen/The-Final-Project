@@ -5,6 +5,7 @@ import Footer from './components/Footer/FooterMainStructure/Footer.jsx'
 // import CardList from './components/CardList/CardList'
 // import { useAuth } from './hooks/useAuth'
 import Preloader from './components/Preloader/Preloader'
+import MainCarousel from './components/MainCarousel/MainCarousel'
 // import { AuthContext } from './context/AuthContext'
 import './styles/App.scss'
 
@@ -13,6 +14,7 @@ function App() {
   // const isAuthenticated = !!token
   return (
     <div className="text-bg-info">
+      <MainCarousel />
       <AppRouter />
       <Preloader />
       <Footer />
