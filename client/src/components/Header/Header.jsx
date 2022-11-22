@@ -3,57 +3,97 @@ import React from 'react'
 import {
   AppBar,
   Container,
-  MenuItem,
-  Toolbar,
   Typography,
-  Box,
-  List,
-  ListItem,
+  IconButton,
+  Tooltip,
+  Badge,
 } from '@mui/material/'
-import { HeaderLinks, CustomLink } from './components/style'
 import Logo from './components/logoSvg'
-import BagPopper from './components/Basket'
-import FavoritePopper from './components/Favorite'
-import LogInPopper from './components/logIn'
 
+import { HeaderLinks, IconsButtonContainer } from './components/styles'
+import {
+  FavoriteBorderOutlined,
+  PersonOutlined,
+  ShoppingBagOutlined,
+} from '@mui/icons-material'
 const Header = () => {
   return (
     <>
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar>
-            <Link to={'/'}>
-              <Logo />
+      <AppBar>
+        <Container
+          sx={{
+            fontSize: '16px',
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            padding: '1.25em',
+          }}
+        >
+          <Link to={'/'}>
+            <Logo />
+          </Link>
+          <HeaderLinks>
+            <Link to="/mens" style={{ textDecoration: 'none' }}>
+              <Typography variant="body">mens</Typography>
             </Link>
-            <List variant=" ">
-              <ListItem>
-                {' '}
-                <Link to="/mens" style={{ textDecoration: 'none' }}>
-                  <Typography variant="body">mens</Typography>
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/womens">
-                  <Typography variant="body">womens</Typography>
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/childrens">
-                  <Typography variant="body">childrens</Typography>
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/brends">
-                  <Typography variant="body">brends</Typography>
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/news">
-                  <Typography variant="body">news</Typography>
-                </Link>
-              </ListItem>
-            </List>
-          </Toolbar>
+            <Link to="/womens" style={{ textDecoration: 'none' }}>
+              <Typography variant="body">womens</Typography>
+            </Link>
+            <Link to="/childrens" style={{ textDecoration: 'none' }}>
+              <Typography variant="body">childrens</Typography>
+            </Link>
+            <Link to="/brends" style={{ textDecoration: 'none' }}>
+              <Typography variant="body">brends</Typography>
+            </Link>
+            <Link to="/news" style={{ textDecoration: 'none' }}>
+              <Typography variant="body">news</Typography>
+            </Link>
+          </HeaderLinks>
+          <IconsButtonContainer
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <IconButton component={Link} to="/#">
+              <Tooltip>
+                <PersonOutlined sx={{ color: 'primary.contrastText' }} />
+              </Tooltip>
+            </IconButton>
+            <IconButton
+              sx={{ color: 'primary.contrastText' }}
+              component={Link}
+              to="/#"
+            >
+              <Badge
+                badgeContent={1}
+                color="secondary"
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+              >
+                <FavoriteBorderOutlined />
+              </Badge>
+            </IconButton>
+            <IconButton
+              sx={{ color: 'primary.contrastText' }}
+              component={Link}
+              to="/#"
+            >
+              <Badge
+                badgeContent={1}
+                color="secondary"
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+              >
+                <ShoppingBagOutlined />
+              </Badge>
+            </IconButton>
+          </IconsButtonContainer>
         </Container>
       </AppBar>
     </>
