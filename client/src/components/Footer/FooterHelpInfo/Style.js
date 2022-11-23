@@ -8,6 +8,9 @@ const footerHelpInfoStyles = {
     color: '#00FF38',
     textTransform: 'uppercase',
     cursorPointer: 'none',
+    '@media (max-width: 900px)': {
+      fontSize: '1.0rem',
+    },
   },
   p: {
     fontSize: '1.25rem',
@@ -18,6 +21,9 @@ const footerHelpInfoStyles = {
     color: '#868686',
     '&:hover': {
       color: '#FFFFFF',
+    },
+    '@media (max-width: 900px)': {
+      fontSize: '1.0rem',
     },
   },
 }

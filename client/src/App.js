@@ -1,4 +1,4 @@
-import Footer from './components/Footer/FoterMainStructure/Footer'
+import Footer from './components/Footer/FooterMainStructure/Footer'
 import Header from './components/Header/Header'
 
 function App() {

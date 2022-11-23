@@ -17,6 +17,7 @@ module.exports = async passport => {
       Customer.findById(jwt_payload.id)
         .then(customer => {
           if (customer) {
+            console.log('customerInJWt', customer);
             return done(null, customer);
           }
           return done(null, false);

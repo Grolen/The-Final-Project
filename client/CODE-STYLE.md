@@ -6,7 +6,11 @@
 
 # Axios
 
+<<<<<<< HEAD
+# Boostrap React
+=======
 # Material UI
+>>>>>>> origin/develop
 
 # UseSelector,useDispatch
 
@@ -20,4 +24,14 @@
 
 # Не писать долгие и большие компоненты, функции
 
+<<<<<<< HEAD
+# Компоненты создавать через стрелочные функции, пример:
+
+<!-- const Component = () => {
+  return <div>Component</div>
+}
+
+export default Component  -->
+=======
 # Код писать максимально масштабируемым и простыми
+>>>>>>> origin/develop
