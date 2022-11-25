@@ -1,4 +1,4 @@
-const basketLayoutStyle = {
+export const basketLayoutStyle = {
   div: {
     position: 'fixed',
     backgroundColor: '#FFFFFF',
@@ -10,16 +10,11 @@ const basketLayoutStyle = {
   },
   div2: {
     overflow: 'hidden',
+    width: '1000%',
     margin: '2rem 2rem 10px 2rem',
   },
-  div3: {
-    overflow: 'hidden',
-    border: '1px solid #3F3F3F',
-    maxHeight: '61px',
-  },
-  h4: {
+  h3: {
     fontSize: '1.25rem',
-    fontStyle: 'Regular',
     textAlign: 'center',
     fonWeight: '700',
     textDecoration: 'none',
@@ -34,10 +29,19 @@ const basketLayoutStyle = {
     textDecoration: 'none',
     textTransform: 'uppercase',
     cursorPointer: 'none',
-    '&:hover': {
-      color: '#FFFFFF',
-    },
+    marginTop: '28px',
+  },
+  button: {
+    color: '#FFFFFF',
+    backgroundColor: '#000000',
+    borderRadius: 'none',
+    maxWidth: '426px',
+    width: '100vw',
+    fontSize: '1.25rem',
+    fontStyle: 'Regular',
+    textAlign: 'center',
+    fonWeight: '700',
+    textDecoration: 'none',
+    textTransform: 'uppercase',
   },
 }
-
-export default basketLayoutStyle
