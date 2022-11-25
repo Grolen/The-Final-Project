@@ -51,6 +51,7 @@ const CardList = (cardListProps) => {
               brand,
               name,
               currentPrice,
+              previousPrice,
               categories,
               imageUrls,
               itemNo,
@@ -65,6 +66,7 @@ const CardList = (cardListProps) => {
               quantity,
               enabled,
               card,
+              previousPrice,
               itemNo,
             }
             return <ActualCard key={itemNo} {...props} />

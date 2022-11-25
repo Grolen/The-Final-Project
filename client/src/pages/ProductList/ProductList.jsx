@@ -32,7 +32,7 @@ const ProductList = () => {
   })
 
   useEffect(() => {
-    getCards(sort)
+    getCards()
   }, [sort])
 
   const props = {

@@ -14,7 +14,7 @@ const ActualCard = (props) => {
     const response = await ProductService.getProductsById(itemNo)
     setActualCard(response.data)
   })
-  const { view, itemNo } = props
+  const { view, itemNo, previousPrice } = props
 
   const redirectToCard = () => {
     navigate(`/list/${itemNo}`)
@@ -32,25 +32,13 @@ const ActualCard = (props) => {
 }
 
 ActualCard.propTypes = {
-  brand: PropTypes.string.isRequired,
-  currentPrice: PropTypes.number.isRequired,
-  categories: PropTypes.string.isRequired,
-  imageUrls: PropTypes.array.isRequired,
-  isCardsLoading: PropTypes.bool.isRequired,
-  card: PropTypes.object.isRequired,
-  enabled: PropTypes.bool.isRequired,
-  quantity: PropTypes.number.isRequired,
   view: PropTypes.bool.isRequired,
-  myCustomParam: PropTypes.string.isRequired,
+  itemNo: PropTypes.string.isRequired,
 }
 
 ActualCard.defaultProps = {
-  element: 'Posts',
-  brand: 'Nike',
-  currentPrice: 7000,
-  categories: 'for men',
-  imageUrls: [],
-  isCardsLoading: false,
+  view: false,
+  itemNo: '',
 }
 
 export default ActualCard

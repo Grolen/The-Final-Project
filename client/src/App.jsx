@@ -1,10 +1,9 @@
 import React from 'react'
 import AppRouter from './components/AppRouter'
 import NavigatePanel from './components/NavigatePanel/NavigatePanel'
-import CardList from './components/CardList/CardList'
 import { useAuth } from './hooks/useAuth'
-// import Preloader from './components/Preloader/Preloader'
 import { AuthContext } from './context/AuthContext'
+// import Header from './components/Header/Header'
 import './styles/App.scss'
 
 function App() {
@@ -22,6 +21,7 @@ function App() {
     >
       <div className="text-bg-info">
         {isAuthenticated && <NavigatePanel startFrom="Home" />}
+        {/*{isAuthenticated && <Header />}*/}
         <AppRouter />
       </div>
     </AuthContext.Provider>

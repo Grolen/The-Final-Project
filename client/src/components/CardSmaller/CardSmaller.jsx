@@ -6,22 +6,18 @@ import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 import PropTypes from 'prop-types'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import { useDispatch, useSelector } from 'react-redux'
-// import ActualCard from '../ActualCard/ActualCard'
+import SaleBlock from '../UI/SaleBlock/SaleBlock'
+import ActualPrice from '../UI/ActualPrice/ActualPrice'
 import styles from './CardSmaller.module.scss'
 
 const CardSmaller = (props) => {
   const {
-    enabled,
-    quantity,
-    brand,
     currentPrice,
     categories,
     imageUrls,
     name,
     redirectToCard,
-    card,
-    myCustomParam,
+    previousPrice,
   } = props
 
   const addItemsToFav = (event) => {
@@ -42,9 +38,15 @@ const CardSmaller = (props) => {
             <FavoriteBorderIcon onClick={addItemsToFav} />
             <Typography gutterBottom variant="h5" component="div">
               {name} {categories}
+              {previousPrice && <SaleBlock />}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {currentPrice}₴
+              <span>{currentPrice}₴</span>
+              {previousPrice ? (
+                <ActualPrice previousPrice={previousPrice} />
+              ) : (
+                previousPrice
+              )}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -62,7 +64,6 @@ CardSmaller.propTypes = {
   enabled: PropTypes.bool.isRequired,
   quantity: PropTypes.number.isRequired,
   view: PropTypes.bool.isRequired,
-  myCustomParam: PropTypes.string.isRequired,
 }
 
 CardSmaller.defaultProps = {

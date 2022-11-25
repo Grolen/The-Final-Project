@@ -11,6 +11,8 @@ import Visibility from '@mui/icons-material/Visibility'
 import CreateNewFolder from '@mui/icons-material/CreateNewFolder'
 import PropTypes from 'prop-types'
 import styles from './CardBigger.module.scss'
+import SaleBlock from '../UI/SaleBlock/SaleBlock'
+import ActualPrice from '../UI/ActualPrice/ActualPrice'
 
 const CardBigger = (props) => {
   const {
@@ -20,7 +22,7 @@ const CardBigger = (props) => {
     imageUrls,
     name,
     redirectToCard,
-    itemNo,
+    previousPrice,
   } = props
   console.log('brand: ', brand)
   return (
@@ -108,9 +110,11 @@ const CardBigger = (props) => {
             </Typography>
             <Typography sx={{ fontSize: 'sm', fontWeight: 'md' }}>
               {categories}
+              {previousPrice && <SaleBlock />}
             </Typography>
           </Box>
           <Link
+            style={{ display: 'flex', flexDirection: 'column' }}
             // href="#dribbble-shot"
             level="body3"
             underline="none"
@@ -121,7 +125,12 @@ const CardBigger = (props) => {
               '&:hover': { color: 'primary.plainColor' },
             }}
           >
-            {currentPrice}₴
+            <span>{currentPrice}₴</span>
+            {previousPrice ? (
+              <ActualPrice previousPrice={previousPrice} />
+            ) : (
+              previousPrice
+            )}
           </Link>
         </Box>
       </Card>

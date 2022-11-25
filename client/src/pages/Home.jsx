@@ -1,16 +1,11 @@
 import React from 'react'
 import MainCarousel from '../components/Carousel/MainCarousel'
 import Footer from '../components/Footer/FooterMainStructure/Footer'
+import Header from '../components/Header/Header'
 
 const Home = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-      }}
-    >
+    <div>
       <MainCarousel />
       <Footer />
     </div>

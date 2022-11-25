@@ -22,7 +22,8 @@ const Options = (props) => {
 Options.propTypes = {
   sizeFirst: PropTypes.number.isRequired,
   sizeSecond: PropTypes.number.isRequired,
-  changeCardSize: PropTypes.func.isRequired,
+  changeOnSmaller: PropTypes.func.isRequired,
+  changeOnBigger: PropTypes.func.isRequired,
   product: PropTypes.string.isRequired,
 }
 

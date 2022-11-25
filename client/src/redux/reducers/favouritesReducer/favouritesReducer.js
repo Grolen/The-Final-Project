@@ -1,24 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  itemsInFavourites: [],
+  itemsInWishlist: [],
 }
 
-const favouritesSlice = createSlice({
-  name: 'favourites',
+const wishlistSlice = createSlice({
+  name: 'wishlist',
   initialState,
   reducers: {
-    setItemInFavourites: (state, action) => {
-      state.itemsInFavourites.push(action.payload)
+    setItemInWishlist: (state, action) => {
+      state.itemsInWishlist.push(action.payload)
     },
-    deleteItemsFromFavourites: (state, action) => {
-      state.itemsInFavourites = state.itemsInFavourites.filter(
+    deleteItemsFromWishlist: (state, action) => {
+      state.itemsInWishlist = state.itemsInWishlist.filter(
         (card) => card.id !== action.payload
       )
     },
   },
+  extraReducers: {},
 })
 
-export const { setItemInFavourites, deleteItemsFromFavourites } =
-  favouritesSlice.actions
-export default favouritesSlice.reducer
+export const { setItemInWishlist, deleteItemsFromWishlist } =
+  wishlistSlice.actions
+export default wishlistSlice.reducer
