@@ -1,9 +1,13 @@
-import logo from './logo.svg'
 import './styles/App.module.scss'
 import MainCarousel from './components/MainCarousel/MainCarousel'
+import SecondCarousel from './components/SecondCarousel/SecondCarousel'
 
 function App() {
-  return <MainCarousel />
+  return (
+    <>
+      <SecondCarousel />
+    </>
+  )
 }
 
 export default App
