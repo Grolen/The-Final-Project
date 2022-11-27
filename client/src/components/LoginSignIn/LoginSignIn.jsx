@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { useFetching } from '../../hooks/useFetching'
 import { AuthContext } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const LoginSignIn = () => {
   const [loginForm, setLoginForm] = useState({
@@ -11,6 +12,7 @@ const LoginSignIn = () => {
     password: '',
   })
   const { loading, request, error, clearError } = useFetching()
+  const navigate = useNavigate()
   const auth = useContext(AuthContext)
 
   useEffect(() => {
@@ -31,9 +33,9 @@ const LoginSignIn = () => {
       const data = await request('/api/customers/login', 'POST', {
         ...loginForm,
       })
-      console.log(data.userId)
       console.log(data.token)
       auth.login(data.token)
+      navigate('/')
       setLoginForm({ loginOrEmail: '', password: '' })
     } catch (e) {
       console.log(e)

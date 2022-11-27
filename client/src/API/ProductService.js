@@ -20,14 +20,4 @@ export default class ProductService {
     const { products, productsQuantity } = response.data
     return response.data
   }
-
-  static async getFilteredByParam(sort) {
-    let url = `/api/products/filter?+currentPrice`
-    if (sort === 'labelFor') {
-      url = `/api/products/filter?+name`
-    }
-    const response = await axios.get(`/api/products/filter?+${sort}`)
-    console.log(response)
-    return response
-  }
 }

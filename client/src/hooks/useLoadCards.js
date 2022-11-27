@@ -7,7 +7,7 @@ export const useLoadCards = () => {
   const [startPage, setStartPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
 
-  const handleChange = async (event) => {
+  const handleChange = (event) => {
     setSort(event.target.value)
   }
 

@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import ErrorPage from '../pages/ErrorPage'
 import LoginPage from '../pages/LoginPage/LoginPage'
 
-const AppRouter = (isAuthenticated) => {
+const AppRouter = ({ isAuthenticated }) => {
   return isAuthenticated ? (
     <Routes>
       {privateRoutes.map((route) => (

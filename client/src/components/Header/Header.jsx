@@ -1,5 +1,5 @@
-import { Link, NavLink } from 'react-router-dom'
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import {
   AppBar,
   Container,
@@ -9,6 +9,7 @@ import {
   Badge,
 } from '@mui/material/'
 import Logo from './components/logoSvg'
+import { AuthContext } from '../../context/AuthContext'
 
 import { HeaderLinks, IconsButtonContainer } from './components/styles'
 import {
@@ -18,6 +19,14 @@ import {
 } from '@mui/icons-material'
 
 const Header = () => {
+  const navigate = useNavigate()
+  const auth = useContext(AuthContext)
+  const logoutFunc = (event) => {
+    event.preventDefault()
+    auth.logout()
+    auth.isAuthenticated = false
+    navigate('/login')
+  }
   return (
     <>
       <AppBar>
@@ -48,6 +57,11 @@ const Header = () => {
             </Link>
             <Link to="/news" style={{ textDecoration: 'none' }}>
               <Typography variant="body">news</Typography>
+            </Link>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Typography onClick={logoutFunc} variant="body">
+                Logout
+              </Typography>
             </Link>
           </HeaderLinks>
           <IconsButtonContainer

@@ -3,7 +3,7 @@ import LoginPage from '../pages/LoginPage/LoginPage'
 import ProductList from '../pages/ProductList/ProductList'
 import ProductDetails from '../pages/ProductDetails'
 import CartPage from '../pages/CartPage'
-import CardIdPage from '../pages/CardIdPage'
+import CardIdPage from '../pages/CardIdPage/CardIdPage'
 import WishList from '../pages/WishList/WishList'
 
 export const privateRoutes = [
