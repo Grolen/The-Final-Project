@@ -18,7 +18,7 @@ import { ThemeProvider } from '@mui/material/styles'
 function BascetCard() {
   return (
     <Grid item>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card style={{ maxWidth: 545, width: '100vw' }}>
         <Grid container spacing={2}>
           <Grid item>
             <CardMedia component="img" height="120" image="#" alt="#" />
