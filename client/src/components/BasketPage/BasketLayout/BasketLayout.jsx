@@ -18,7 +18,7 @@ const BasketLayout = () => {
           justifyContent="space-between"
         >
           <Grid xs={5}>
-            <Typography variant="h3" sx={basketLayoutStyle.h3}>
+            <Typography variant="h3" style={basketLayoutStyle.h3}>
               КОРЗИНА
             </Typography>
           </Grid>
@@ -41,7 +41,7 @@ const BasketLayout = () => {
           </Grid>
           {cardShow ? (
             <Grid container xl={12} rowSpacing={12}>
-              <Typography variant="string" sx={basketLayoutStyle.p}>
+              <Typography variant="string" style={basketLayoutStyle.p}>
                 Ваша корзина пуста.
               </Typography>
             </Grid>

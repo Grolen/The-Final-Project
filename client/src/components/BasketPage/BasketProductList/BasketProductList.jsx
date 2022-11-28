@@ -1,6 +1,6 @@
 import { Box, Grid } from '@material-ui/core'
 import React from 'react'
-import BascetCard from '../BascetCard/BascetCard'
+import BascetCard from '../BasketCard/BasketCard'
 
 const BasketProductList = () => {
   return (
