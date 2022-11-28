@@ -11,11 +11,10 @@ const BasketProductList = () => {
         justifyContent="center"
         alignItems="center"
         xl={12}
-        rowSpacing={12}
+        spacing={2}
       >
-        <Grid>
-          <BascetCard />
-        </Grid>
+        <BascetCard />
+        <BascetCard />
       </Grid>
     </Box>
   )

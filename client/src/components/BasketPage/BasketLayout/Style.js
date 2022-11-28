@@ -7,6 +7,9 @@ export const basketLayoutStyle = {
     top: 0,
     right: 0,
     zIndex: 100000000,
+    '@media (max-width: 900px)': {
+      width: '60%',
+    },
   },
   div2: {
     overflow: 'hidden',
