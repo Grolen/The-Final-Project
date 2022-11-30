@@ -8,9 +8,9 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 // import images
 const items = axios
-  .get('products/slides')
+  .get('/slides')
   .then((slides) => {
-    slides.json()
+    console.log(slides)
   })
   .catch((err) => {
     /*Do something with error, e.g. show error to user*/
