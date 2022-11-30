@@ -42,11 +42,6 @@ const Footer = () => {
                   <FooterContacts />
                 </Grid>
               </Hidden>
-              {/* <Hidden smUp>
-            <Grid sm={12} xs={12}>
-              <FooterMobileVersionComponent />
-            </Grid>
-          </Hidden> */}
             </Grid>
           </div>
           <FooterShopInfo />

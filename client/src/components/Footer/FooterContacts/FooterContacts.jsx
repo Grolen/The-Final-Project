@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography, ListItem, List, Grid } from '@mui/material'
+import { Box, Typography, Grid } from '@mui/material'
 import footerContactsStyles from './Style'
 import InstagramComponent from './images/Instagram'
 import FacebookComponent from './images/Facebook'
