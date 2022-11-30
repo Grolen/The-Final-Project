@@ -27,6 +27,14 @@ const theme = createTheme({
       },
     },
   },
+  IconButton: {
+    root: {
+      '&:hover': {
+        backgroundColor: '#868686',
+        color: '#868686',
+      },
+    },
+  },
 })
 
 export default theme
