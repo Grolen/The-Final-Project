@@ -8,7 +8,7 @@ const CarouselItem = (props) => {
       <img
         src={item.image}
         alt={item.alt}
-        style={{ width: '100%', height: '704px', objectFit: 'cover' }}
+        style={{ width: '100%', height: '100vh', objectFit: 'cover' }}
       />
     </Paper>
   )

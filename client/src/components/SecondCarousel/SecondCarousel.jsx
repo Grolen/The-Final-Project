@@ -1,34 +1,43 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Slider from 'react-slick'
 import './SecondCarousel.scss'
 import { Container } from '@mui/material'
+import axios from 'axios'
 // import icons
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 // import images
+const items = axios
+  .get('products/slides')
+  .then((slides) => {
+    slides.json()
+  })
+  .catch((err) => {
+    /*Do something with error, e.g. show error to user*/
+  })
 
-const items = [
-  {
-    image:
-      'https://cdn.discordapp.com/attachments/1043545360498442271/1044073816458010685/Rectangle_15.jpg',
-    alt: `news`,
-  },
-  {
-    image:
-      'https://cdn.discordapp.com/attachments/1043545360498442271/1044073959219548220/Rectangle_16.jpg',
-    alt: `news`,
-  },
-  {
-    image:
-      'https://cdn.discordapp.com/attachments/1043545360498442271/1044074426523713606/imgonline-com-ua-Resize-W5qKpKMDqd.jpg',
-    alt: `news`,
-  },
-  {
-    image:
-      'https://cdn.discordapp.com/attachments/1043545360498442271/1044074426523713606/imgonline-com-ua-Resize-W5qKpKMDqd.jpg',
-    alt: `news`,
-  },
-]
+// const items = [
+//   {
+//     image:
+//       'https://cdn.discordapp.com/attachments/1043545360498442271/1044073816458010685/Rectangle_15.jpg',
+//     alt: `news`,
+//   },
+//   {
+//     image:
+//       'https://cdn.discordapp.com/attachments/1043545360498442271/1044073959219548220/Rectangle_16.jpg',
+//     alt: `news`,
+//   },
+//   {
+//     image:
+//       'https://cdn.discordapp.com/attachments/1043545360498442271/1044074426523713606/imgonline-com-ua-Resize-W5qKpKMDqd.jpg',
+//     alt: `news`,
+//   },
+//   {
+//     image:
+//       'https://cdn.discordapp.com/attachments/1043545360498442271/1044074426523713606/imgonline-com-ua-Resize-W5qKpKMDqd.jpg',
+//     alt: `news`,
+//   },
+// ]
 
 function SampleNextArrow({ onClick }) {
   return (
@@ -48,6 +57,10 @@ function SamplePrevArrow({ onClick }) {
 
 const SecondCarousel = () => {
   const [slideIndex, setSlideIndex] = useState(0)
+
+  useEffect(() => {
+    console.log(items)
+  }, [])
 
   const settings = {
     dots: false,
@@ -80,7 +93,7 @@ const SecondCarousel = () => {
       <div className="container">
         <div className="slider">
           <Slider {...settings}>
-            {items.map((item, index) => (
+            {/* {items.map((item, index) => (
               <div
                 className={
                   index === slideIndex ? 'slide slide-active' : 'slide'
@@ -89,7 +102,7 @@ const SecondCarousel = () => {
               >
                 <img src={item.image} alt="" />
               </div>
-            ))}
+            ))} */}
           </Slider>
         </div>
       </div>
