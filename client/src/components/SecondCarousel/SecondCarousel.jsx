@@ -7,13 +7,12 @@ import axios from 'axios'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 // import images
-const items = axios
-  .get('/slides')
-  .then((slides) => {
-    console.log(slides)
-  })
-  .catch((err) => {
-    /*Do something with error, e.g. show error to user*/
+
+const response = axios
+  .get('api/slides')
+  .then((slides) => slides)
+  .catch((e) => {
+    return 'Cannot upload slides'
   })
 
 // const items = [
@@ -59,7 +58,7 @@ const SecondCarousel = () => {
   const [slideIndex, setSlideIndex] = useState(0)
 
   useEffect(() => {
-    console.log(items)
+    console.log(response)
   }, [])
 
   const settings = {

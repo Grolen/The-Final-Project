@@ -1,5 +1,6 @@
 import React from 'react'
 import MainCarousel from '../components/Carousel/MainCarousel'
+import SecondCarousel from '../components/SecondCarousel/SecondCarousel'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       }}
     >
       <MainCarousel />
+      <SecondCarousel />
     </div>
   )
 }
