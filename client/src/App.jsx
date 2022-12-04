@@ -6,10 +6,10 @@ import { AuthContext } from './context/AuthContext'
 import Header from './components/Header/Header'
 import './styles/App.scss'
 
-function App() {
+const App = () => {
   const { token, logout, login, ready } = useAuth()
   const isAuthenticated = !!token
-  console.log(!!token)
+  console.log('Token: ', !!token)
   return (
     <AuthContext.Provider
       value={{
@@ -22,7 +22,7 @@ function App() {
     >
       <div className="text-bg-info">
         {isAuthenticated && <NavigatePanel startFrom="Home" />}
-        {/*{isAuthenticated && <Header />}*/}
+        {isAuthenticated && <Header />}
         <AppRouter isAuthenticated={isAuthenticated} />
       </div>
     </AuthContext.Provider>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { privateRoutes, publicRoutes } from '../router'
 import { Route, Routes } from 'react-router-dom'
 import ErrorPage from '../pages/ErrorPage'

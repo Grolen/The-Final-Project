@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import {
   AppBar,
@@ -17,8 +17,12 @@ import {
   PersonOutlined,
   ShoppingBagOutlined,
 } from '@mui/icons-material'
+import { useLoading } from '../../hooks/useLoading'
+import CartService from '../../API/CartService'
+import { useAuth } from '../../hooks/useAuth'
 
 const Header = () => {
+  const { token } = useAuth()
   const navigate = useNavigate()
   const auth = useContext(AuthContext)
   const logoutFunc = (event) => {
@@ -27,6 +31,27 @@ const Header = () => {
     auth.isAuthenticated = false
     navigate('/login')
   }
+
+  console.log(token)
+
+  const [getCart, isCartLoading, cartError] = useLoading(async () => {
+    const response = await CartService.getCartInfo(token)
+    console.log(response.products)
+    return response
+  })
+
+  const linksAndDescription = [
+    { link: '/men', description: 'men' },
+    { link: '/women', description: 'women' },
+    { link: '/children', description: 'children' },
+    { link: '/brands', description: 'brands' },
+    { link: '/news', description: 'news' },
+  ]
+
+  useEffect(() => {
+    getCart()
+  }, [])
+
   return (
     <>
       <AppBar>
@@ -43,21 +68,14 @@ const Header = () => {
             <Logo />
           </Link>
           <HeaderLinks>
-            <Link to="/men" style={{ textDecoration: 'none' }}>
-              <Typography variant="body">men</Typography>
-            </Link>
-            <Link to="/women" style={{ textDecoration: 'none' }}>
-              <Typography variant="body">women</Typography>
-            </Link>
-            <Link to="/children" style={{ textDecoration: 'none' }}>
-              <Typography variant="body">children</Typography>
-            </Link>
-            <Link to="/brands" style={{ textDecoration: 'none' }}>
-              <Typography variant="body">brands</Typography>
-            </Link>
-            <Link to="/news" style={{ textDecoration: 'none' }}>
-              <Typography variant="body">news</Typography>
-            </Link>
+            {linksAndDescription.map((element) => {
+              const { link, description } = element
+              return (
+                <Link to={link} style={{ textDecoration: 'none' }}>
+                  <Typography variant="body">{description}</Typography>
+                </Link>
+              )
+            })}
             <Link to="/login" style={{ textDecoration: 'none' }}>
               <Typography onClick={logoutFunc} variant="body">
                 Logout
@@ -79,7 +97,7 @@ const Header = () => {
             <IconButton
               sx={{ color: 'primary.contrastText' }}
               component={Link}
-              to="/#"
+              to="/wishlist"
             >
               <Badge
                 badgeContent={1}
@@ -95,7 +113,7 @@ const Header = () => {
             <IconButton
               sx={{ color: 'primary.contrastText' }}
               component={Link}
-              to="/#"
+              to="/cart"
             >
               <Badge
                 badgeContent={1}

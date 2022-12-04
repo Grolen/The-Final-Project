@@ -6,13 +6,10 @@ export default class ProductService {
     return response
   }
 
-  static async getProductsBySomeParams(perPage, startPage, sort) {
+  static async getProductsBySomeParams(perPage, startPage, sort, cards) {
     let url = `/api/products/filter?perPage=${perPage}&startPage=${startPage}`
-    if (sort === 'labelFor') {
-      url = `/api/products/filter?sort=+currentPrice`
-    }
     if (sort) {
-      url = `/api/products/filter?perPage=${perPage}&startPage=${startPage}&sort=+${sort}`
+      url = `/api/products/filter?sort=+${sort}`
     }
     const response = await axios.get(url, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },

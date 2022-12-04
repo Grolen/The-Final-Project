@@ -1,7 +1,7 @@
 import reducer, {
   setItemInFavourites,
   deleteItemsFromFavourites,
-} from './favouritesReducer'
+} from './wishlistReducer'
 
 describe('FavSlice', () => {
   const itemsInFavourites = []

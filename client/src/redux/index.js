@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import favouritesReducer from './reducers/favouritesReducer/favouritesReducer'
+import favouritesReducer from './reducers/favouritesReducer/wishlistReducer'
 
 const rootReducer = combineReducers({
   favouritesReducer,

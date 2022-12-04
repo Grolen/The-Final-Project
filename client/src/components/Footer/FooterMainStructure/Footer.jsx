@@ -3,7 +3,9 @@ import FooterShopInfo from '../FooterShopInfo/FooterShopInfo'
 import FooterAboutCompany from '../FooterAboutCompany/FooterAboutCompany'
 import { Grid, Box, Hidden } from '@mui/material'
 import FooterHelpInfo from '../FooterHelpInfo/FooterHelpInfo'
+
 import FooterBrands from '../FooterBrands/FooterBrands'
+
 import FooterContacts from '../FooterContacts/FooterContacts'
 import footerMainStructureStile from './Style'
 import FooterMobileVersionComponent from '../FooterMobileVersion/FooterMobileVersion'

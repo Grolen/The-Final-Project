@@ -6,7 +6,6 @@ const FooterHelpInfo = () => {
   return (
     <Box
       sx={{
-        // backgroundColor: 'white',
         display: 'flex',
         justifyContent: 'space-around',
         backgroundColor: '#000000',

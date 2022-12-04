@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Breadcrumb } from 'antd'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
@@ -8,7 +7,7 @@ import { useBreadCrumb } from '../../hooks/useBreadCrumb'
 const NavigatePanel = ({ startFrom }) => {
   const { navigate, pathNames, reNavigate } = useBreadCrumb()
   return (
-    <Breadcrumbs style={{ marginBottom: '20px' }}>
+    <Breadcrumbs>
       <Link
         style={{ cursor: 'pointer', textDecoration: 'none' }}
         onClick={reNavigate}

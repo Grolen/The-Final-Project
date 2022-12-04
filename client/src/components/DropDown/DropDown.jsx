@@ -20,7 +20,7 @@ const DropDown = (dropDownProps) => {
           onChange={onChange}
           label="Age"
         >
-          <MenuItem value="labelFor">
+          <MenuItem disabled value="labelFor">
             <em>{labelFor}</em>
           </MenuItem>
           {values.map((value) => {

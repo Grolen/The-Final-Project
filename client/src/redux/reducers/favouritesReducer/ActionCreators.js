@@ -2,10 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export const wishlistItems = createAsyncThunk(
-  'cards/fetchAll',
+  'wishlist/getAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/api/products', 'POST', {
+      const response = await axios.get('/wishlist', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       return response.data

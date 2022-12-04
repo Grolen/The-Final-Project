@@ -24,7 +24,7 @@ const ProductList = () => {
 
   const [getCards, isCardsLoading, cardsError] = useLoading(async () => {
     const { products, productsQuantity } =
-      await ProductService.getProductsBySomeParams(3, startPage, sort)
+      await ProductService.getProductsBySomeParams(3, startPage, sort, cards) // to setCards(cards = [])
     setCards([...cards, ...products])
     console.log('productsQuantity: ', productsQuantity)
     setStartPage(startPage + 1)

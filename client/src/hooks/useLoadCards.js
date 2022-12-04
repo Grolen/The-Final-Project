@@ -3,7 +3,7 @@ import { useState } from 'react'
 export const useLoadCards = () => {
   const [view, setView] = useState(false)
   const [cards, setCards] = useState([])
-  const [sort, setSort] = useState('currentPrice')
+  const [sort, setSort] = useState('')
   const [startPage, setStartPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
 

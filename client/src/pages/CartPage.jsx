@@ -1,5 +1,6 @@
 import React from 'react'
-import Button from '../components/Button/Button'
+// import Button from '../components/Button/Button'
+import BasketBoard from '../components/BasketPage/BasketBoard/BasketBoardLayout'
 
 const CartPage = () => {
   const mainButton = {
@@ -28,9 +29,10 @@ const CartPage = () => {
 
   return (
     <div className="text-center text-bg-light">
-      <Button buttonContent={mainButton} title="КУПИТь" />
-      <Button buttonContent={blackBGButton} title="ДОБАВИТЬ В КОРЗИНУ" />
-      <Button buttonContent={greyBGButton} title="ВЕРНУТЬСЯ В КОРЗИНУ" />
+      {/*<Button buttonContent={mainButton} title="КУПИТь" />*/}
+      <BasketBoard />
+      {/*<Button buttonContent={blackBGButton} title="ДОБАВИТЬ В КОРЗИНУ" />*/}
+      {/*<Button buttonContent={greyBGButton} title="ВЕРНУТЬСЯ В КОРЗИНУ" />*/}
     </div>
   )
 }
