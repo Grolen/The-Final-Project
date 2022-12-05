@@ -1,6 +1,6 @@
 import React from 'react'
 // import Button from '../components/Button/Button'
-import BasketBoard from '../components/BasketPage/BasketBoard/BasketBoardLayout'
+import BasketBoard from '../../components/BasketPage/BasketBoard/BasketBoardLayout'
 
 const CartPage = () => {
   const mainButton = {

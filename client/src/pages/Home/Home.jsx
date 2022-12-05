@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import MainCarousel from '../components/Carousel/MainCarousel'
-import Footer from '../components/Footer/FooterMainStructure/Footer'
-import SecondCarousel from '../components/SecondCarousel/SecondCarousel'
-import SlidesService from '../API/SlidesService'
-import { useLoading } from '../hooks/useLoading'
-import Preloader from '../components/Preloader/Preloader'
+import MainCarousel from '../../components/Carousel/MainCarousel'
+import Footer from '../../components/Footer/FooterMainStructure/Footer'
+import SecondCarousel from '../../components/SecondCarousel/SecondCarousel'
+import SlidesService from '../../API/SlidesService'
+import { useLoading } from '../../hooks/useLoading'
+import Preloader from '../../components/Preloader/Preloader'
 // import Header from '../components/Header/Header'
 
 const trainers = [

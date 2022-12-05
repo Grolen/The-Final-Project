@@ -14,8 +14,26 @@ import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import { basketCardStyle, theme } from './Style'
 import { ThemeProvider } from '@mui/material/styles'
+import axios from 'axios'
+import { useCart } from '../../../hooks/useCart'
 
-function BascetCard() {
+function BascetCard({ productInShop }) {
+  const { cartQuantity, _id, product } = productInShop
+  console.log('productInShop', productInShop)
+  const { name, brand, currentPrice, quantity } = product
+  console.log(product)
+  const { actualToken } = useCart()
+
+  const deleteProduct = async () => {
+    const response = await axios.delete(`/api/cart/${product._id}`, {
+      headers: {
+        Authorization: `${actualToken}`,
+      },
+    })
+    console.log(response)
+    return response
+  }
+
   return (
     <Grid item>
       <Card style={{ maxWidth: 545, width: '100vw' }}>
@@ -27,13 +45,13 @@ function BascetCard() {
             <CardContent>
               <ThemeProvider theme={theme}>
                 <Typography variant="h5" sx={basketCardStyle.h5_1}>
-                  NIKE WMNS METCON 5 AMP /
+                  {name} /
                 </Typography>
               </ThemeProvider>
               <Typography sx={basketCardStyle.h5_2}>
-                Pink Gradient / 3 560 ГРН
+                {brand}/ {currentPrice}₴
               </Typography>
-              <Typography>Размер : 5.5</Typography>
+              <Typography>Quantity : {quantity}</Typography>
               <Grid
                 container
                 spacing={2}
@@ -55,7 +73,7 @@ function BascetCard() {
                     </Grid>
                     <Grid>
                       <Box style={basketCardStyle.box} textAlign={'center'}>
-                        <Typography>1</Typography>
+                        <Typography>{cartQuantity}</Typography>
                       </Box>
                     </Grid>
                     <Grid>
@@ -69,6 +87,7 @@ function BascetCard() {
                   <CardActions>
                     <Button size="small">
                       <ClearIcon
+                        onClick={deleteProduct}
                         color="#000000"
                         size={'2px'}
                         style={{ fontSize: 19 }}

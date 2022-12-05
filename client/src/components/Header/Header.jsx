@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import {
   AppBar,
@@ -20,26 +20,10 @@ import {
 import { useLoading } from '../../hooks/useLoading'
 import CartService from '../../API/CartService'
 import { useAuth } from '../../hooks/useAuth'
+import { useCart } from '../../hooks/useCart'
 
 const Header = () => {
-  const { token } = useAuth()
-  const navigate = useNavigate()
-  const auth = useContext(AuthContext)
-  const logoutFunc = (event) => {
-    event.preventDefault()
-    auth.logout()
-    auth.isAuthenticated = false
-    navigate('/login')
-  }
-
-  console.log(token)
-
-  const [getCart, isCartLoading, cartError] = useLoading(async () => {
-    const response = await CartService.getCartInfo(token)
-    console.log(response.products)
-    return response
-  })
-
+  const { productsInCart, setProductsInCart, logoutFunc } = useCart()
   const linksAndDescription = [
     { link: '/men', description: 'men' },
     { link: '/women', description: 'women' },
@@ -47,10 +31,6 @@ const Header = () => {
     { link: '/brands', description: 'brands' },
     { link: '/news', description: 'news' },
   ]
-
-  useEffect(() => {
-    getCart()
-  }, [])
 
   return (
     <>
@@ -116,7 +96,7 @@ const Header = () => {
               to="/cart"
             >
               <Badge
-                badgeContent={1}
+                badgeContent={productsInCart.length}
                 color="secondary"
                 anchorOrigin={{
                   vertical: 'bottom',

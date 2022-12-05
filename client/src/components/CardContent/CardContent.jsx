@@ -26,6 +26,10 @@ const CardContent = (cardContentProps) => {
   const [open, setOpen] = useState(false)
   const { token } = useAuth()
 
+  const infoAboutUser = localStorage.getItem(`InfoAboutUser`)
+  const parsed = JSON.parse(infoAboutUser)
+  const actualToken = parsed.token
+
   const blackBGButton = {
     width: '221px',
     height: '44px',
@@ -44,15 +48,12 @@ const CardContent = (cardContentProps) => {
       {},
       {
         headers: {
-          Authorization: `${token}`,
+          Authorization: `${actualToken}`,
         },
       }
     )
     return response
   }
-  console.log(token)
-  // console.log(localStorage.getItem(`InfoAboutUser`))
-  // console.log(localStorage.getItem(window.localStorage.key(1)))
 
   const handleClose = () => setOpen(false)
 

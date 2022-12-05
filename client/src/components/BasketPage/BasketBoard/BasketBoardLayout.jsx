@@ -1,11 +1,15 @@
 import { Box, Button, Grid, Link, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect } from 'react'
 import BascetCard from '../BasketCard/BasketCard'
 import { useNavigate } from 'react-router-dom'
 import BascetBorderLayoutStyle from './Style'
+import { useLoading } from '../../../hooks/useLoading'
+import CartService from '../../../API/CartService'
+import { useCart } from '../../../hooks/useCart'
 
 const BascetBorderLayout = () => {
   const navigate = useNavigate()
+  const { productsInCart, setProductsInCart, logoutFunc } = useCart()
   const redirectToMain = () => {
     navigate('/')
   }
@@ -37,21 +41,13 @@ const BascetBorderLayout = () => {
               alignItems="center"
               spacing={4}
             >
-              <Grid item xl={6} lg={6} md={6} sn={12}>
-                <BascetCard />
-              </Grid>
-              <Grid item xl={6} lg={6} md={6} sn={12}>
-                <BascetCard />
-              </Grid>
-              <Grid item xl={6} lg={6} md={6} sn={12}>
-                <BascetCard />
-              </Grid>
-              <Grid item xl={6} lg={6} md={6} sn={12}>
-                <BascetCard />
-              </Grid>
-              <Grid item xl={6} lg={6} md={6} sn={12}>
-                <BascetCard />
-              </Grid>
+              {productsInCart.map((productInShop, index) => {
+                return (
+                  <Grid key={index} item xl={6} lg={6} md={6} sn={12}>
+                    <BascetCard productInShop={productInShop} />
+                  </Grid>
+                )
+              })}
             </Grid>
           </Grid>
           <Grid item>

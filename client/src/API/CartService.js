@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 export default class CartService {
-  static async getCartInfo(token) {
+  static async getCartInfo(actualToken) {
     const response = await axios.get(`/api/cart`, {
       headers: {
-        Authorization: `${token}`,
+        Authorization: `${actualToken}`,
       },
     })
     return response.data

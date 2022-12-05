@@ -1,7 +1,7 @@
 import React from 'react'
 import { privateRoutes, publicRoutes } from '../router'
 import { Route, Routes } from 'react-router-dom'
-import ErrorPage from '../pages/ErrorPage'
+import ErrorPage from '../pages/ErrorPage/ErrorPage'
 import LoginPage from '../pages/LoginPage/LoginPage'
 
 const AppRouter = ({ isAuthenticated }) => {

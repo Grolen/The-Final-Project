@@ -67,7 +67,7 @@ const CardIdPage = () => {
   return (
     <div className={styles.containerPage}>
       {isCardLoading && <Preloader />}
-      {card && <CardContent {...cardContentProps} />}
+      <CardContent {...cardContentProps} />
     </div>
   )
 }
