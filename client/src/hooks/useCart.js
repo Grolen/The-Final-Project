@@ -1,12 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
-import { useAuth } from './useAuth'
+import { useDispatch, useSelector } from 'react-redux'
+import { cartItems } from '../redux/reducers/CartReducer/ActionCreator'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
-import { useLoading } from './useLoading'
-import CartService from '../API/CartService'
 
 export const useCart = () => {
-  const [productsInCart, setProductsInCart] = useState([])
   const navigate = useNavigate()
   const auth = useContext(AuthContext)
   const logoutFunc = (event) => {
@@ -20,23 +18,20 @@ export const useCart = () => {
   const parsed = JSON.parse(infoAboutUser)
   const actualToken = parsed.token
 
-  const [getCart, isCartLoading, cartError] = useLoading(async () => {
-    const response = await CartService.getCartInfo(actualToken)
-    const products = response.products
-    setProductsInCart(products)
-    return response
-  })
+  const dispatch = useDispatch()
+  const { itemsInCart, isCartLoading, cartError } = useSelector(
+    (state) => state.cartReducer
+  )
 
   useEffect(() => {
-    getCart()
+    dispatch(cartItems(actualToken))
   }, [])
 
   return {
-    productsInCart,
-    setProductsInCart,
-    logoutFunc,
+    itemsInCart,
     actualToken,
     isCartLoading,
     cartError,
+    logoutFunc,
   }
 }

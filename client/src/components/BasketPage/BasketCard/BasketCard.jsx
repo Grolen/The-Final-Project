@@ -19,9 +19,7 @@ import { useCart } from '../../../hooks/useCart'
 
 function BascetCard({ productInShop }) {
   const { cartQuantity, _id, product } = productInShop
-  console.log('productInShop', productInShop)
-  const { name, brand, currentPrice, quantity } = product
-  console.log(product)
+  const { name, brand, currentPrice, quantity, imageUrls } = product
   const { actualToken } = useCart()
 
   const deleteProduct = async () => {
@@ -30,7 +28,6 @@ function BascetCard({ productInShop }) {
         Authorization: `${actualToken}`,
       },
     })
-    console.log(response)
     return response
   }
 
@@ -39,7 +36,12 @@ function BascetCard({ productInShop }) {
       <Card style={{ maxWidth: 545, width: '100vw' }}>
         <Grid container spacing={2}>
           <Grid item>
-            <CardMedia component="img" height="120" image="#" alt="#" />
+            <CardMedia
+              component="img"
+              height="120"
+              image={imageUrls[0]}
+              alt="#"
+            />
           </Grid>
           <Grid item>
             <CardContent>

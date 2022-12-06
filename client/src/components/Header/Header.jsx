@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import {
   AppBar,
@@ -9,7 +9,6 @@ import {
   Badge,
 } from '@mui/material/'
 import Logo from './components/logoSvg'
-import { AuthContext } from '../../context/AuthContext'
 
 import { HeaderLinks, IconsButtonContainer } from './components/styles'
 import {
@@ -17,13 +16,12 @@ import {
   PersonOutlined,
   ShoppingBagOutlined,
 } from '@mui/icons-material'
-import { useLoading } from '../../hooks/useLoading'
-import CartService from '../../API/CartService'
-import { useAuth } from '../../hooks/useAuth'
+
 import { useCart } from '../../hooks/useCart'
 
 const Header = () => {
-  const { productsInCart, setProductsInCart, logoutFunc } = useCart()
+  const { itemsInCart, isCartLoading, logoutFunc } = useCart()
+
   const linksAndDescription = [
     { link: '/men', description: 'men' },
     { link: '/women', description: 'women' },
@@ -51,7 +49,7 @@ const Header = () => {
             {linksAndDescription.map((element) => {
               const { link, description } = element
               return (
-                <Link to={link} style={{ textDecoration: 'none' }}>
+                <Link key={link} to={link} style={{ textDecoration: 'none' }}>
                   <Typography variant="body">{description}</Typography>
                 </Link>
               )
@@ -96,7 +94,8 @@ const Header = () => {
               to="/cart"
             >
               <Badge
-                badgeContent={productsInCart.length}
+                // badgeContent={itemsInCart.length}
+                badgeContent={1}
                 color="secondary"
                 anchorOrigin={{
                   vertical: 'bottom',
