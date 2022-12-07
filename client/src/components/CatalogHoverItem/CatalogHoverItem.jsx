@@ -2,7 +2,7 @@ import React from 'react'
 import { Paper, Typography, Button } from '@mui/material'
 
 export const CatalogHoverItem = (props) => {
-  const { topSpacing } = props
+  const { topSpacing, buttonSpacing } = props
 
   return (
     <Paper
@@ -45,7 +45,7 @@ export const CatalogHoverItem = (props) => {
           p: '2px 26px',
           borderRadius: '0px',
           mt: '22px',
-          left: '75%',
+          left: ` ${buttonSpacing}`,
         }}
       >
         ПОДРОБНЕЕ
