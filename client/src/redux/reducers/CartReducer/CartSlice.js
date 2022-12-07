@@ -2,7 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 import { cartItems } from './ActionCreator'
 
 const initialState = {
-  itemsInCart: {},
+  itemsInCart: {
+    _id: '',
+    customerId: {},
+    products: [],
+  },
   isCartLoading: false,
   cartError: '',
 }

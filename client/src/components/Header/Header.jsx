@@ -18,9 +18,18 @@ import {
 } from '@mui/icons-material'
 
 import { useCart } from '../../hooks/useCart'
+import { AuthContext } from '../../context/AuthContext'
+import { useDispatch } from 'react-redux'
+import { cartItems } from '../../redux/reducers/CartReducer/ActionCreator'
 
 const Header = () => {
   const { itemsInCart, isCartLoading, logoutFunc } = useCart()
+  const { products } = itemsInCart
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(cartItems())
+  }, [dispatch])
 
   const linksAndDescription = [
     { link: '/men', description: 'men' },
@@ -94,8 +103,7 @@ const Header = () => {
               to="/cart"
             >
               <Badge
-                // badgeContent={itemsInCart.length}
-                badgeContent={1}
+                badgeContent={products?.length}
                 color="secondary"
                 anchorOrigin={{
                   vertical: 'bottom',

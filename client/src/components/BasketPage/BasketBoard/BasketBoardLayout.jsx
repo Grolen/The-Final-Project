@@ -5,28 +5,30 @@ import { useNavigate } from 'react-router-dom'
 import BascetBorderLayoutStyle from './Style'
 import { useCart } from '../../../hooks/useCart'
 import Preloader from '../../Preloader/Preloader'
+import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent'
+import { cartItems } from '../../../redux/reducers/CartReducer/ActionCreator'
+import { useDispatch } from 'react-redux'
 
 const BascetBorderLayout = () => {
   const navigate = useNavigate()
   const { itemsInCart, isCartLoading, cartError } = useCart()
   const { _id, customerId, products } = itemsInCart
-  // console.log(products)
-  // console.log(_id)
-  // console.log(customerId)
-  console.log(itemsInCart)
-  // const { customerId, _id, products } = itemsInCart
-  // console.log(isCartLoading)
-  // console.log('products: ', products)
-  // console.log('customerId: ', customerId)
-  // console.log('_id: ', _id)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(cartItems())
+  }, [dispatch])
 
   const redirectToMain = () => {
     navigate('/')
   }
 
+  if (!products?.length) return <h1>Card is Empty</h1>
+
   return (
     <>
       {isCartLoading && <Preloader />}
+      {cartError && <ErrorComponent error={cartError} />}
       <Box sx={BascetBorderLayoutStyle.div}>
         <Typography variant="h2" style={BascetBorderLayoutStyle.h2}>
           КОРЗИНА

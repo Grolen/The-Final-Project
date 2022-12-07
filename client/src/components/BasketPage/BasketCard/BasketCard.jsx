@@ -16,6 +16,7 @@ import { basketCardStyle, theme } from './Style'
 import { ThemeProvider } from '@mui/material/styles'
 import axios from 'axios'
 import { useCart } from '../../../hooks/useCart'
+import { useEffect } from 'react'
 
 function BascetCard({ productInShop }) {
   const { cartQuantity, _id, product } = productInShop
@@ -30,6 +31,30 @@ function BascetCard({ productInShop }) {
     })
     return response
   }
+
+  const addProductToCart = async () => {
+    const response = await axios.put(
+      `/api/cart/${product._id}`,
+      {},
+      {
+        headers: {
+          Authorization: `${actualToken}`,
+        },
+      }
+    )
+    return response
+  }
+
+  const decreaseQuantity = async () => {
+    const response = await axios.delete(`/api/cart/product/${product._id}`, {
+      headers: {
+        Authorization: `${actualToken}`,
+      },
+    })
+    return response
+  }
+
+  // if(!productInShop)
 
   return (
     <Grid item>
@@ -70,7 +95,10 @@ function BascetCard({ productInShop }) {
                   >
                     <Grid>
                       <Button>
-                        <RemoveIcon fontSize="small" />
+                        <RemoveIcon
+                          onClick={decreaseQuantity}
+                          fontSize="small"
+                        />
                       </Button>
                     </Grid>
                     <Grid>
@@ -80,7 +108,7 @@ function BascetCard({ productInShop }) {
                     </Grid>
                     <Grid>
                       <Button>
-                        <AddIcon fontSize="small" />
+                        <AddIcon onClick={addProductToCart} fontSize="small" />
                       </Button>
                     </Grid>
                   </Grid>

@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <div>
-      <MainCarousel />
+      {isSlideLoads ? <Preloader /> : <MainCarousel />}
       {isSlideLoads ? <Preloader /> : <SecondCarousel items={trainers} />}
       <Footer />
     </div>

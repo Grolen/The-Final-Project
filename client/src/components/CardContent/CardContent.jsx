@@ -118,7 +118,7 @@ const CardContent = (cardContentProps) => {
           <ModalElement
             handleClose={handleClose}
             cardContentProps={cardContentProps}
-            title="Cart"
+            // title="Cart"
           />
         </Modal>
       </div>

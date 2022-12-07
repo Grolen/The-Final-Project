@@ -11,9 +11,7 @@ export default class ProductService {
     if (sort) {
       url = `/api/products/filter?sort=+${sort}`
     }
-    const response = await axios.get(url, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    })
+    const response = await axios.get(url)
     const { products, productsQuantity } = response.data
     return response.data
   }
