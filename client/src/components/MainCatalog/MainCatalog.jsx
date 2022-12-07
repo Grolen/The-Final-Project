@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from './MainZalupa.module.scss'
+import styles from './MainCatalog.module.scss'
 import { Container, Grid } from '@mui/material'
 
-const MainZalupa = () => {
+const MainCatalog = () => {
   return (
     <Container>
       <Grid container spacing={2}>
@@ -39,4 +39,4 @@ const MainZalupa = () => {
   )
 }
 
-export default MainZalupa
+export default MainCatalog

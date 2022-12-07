@@ -1,12 +1,12 @@
 import './styles/App.module.scss'
 import MainCarousel from './components/MainCarousel/MainCarousel'
 import SecondCarousel from './components/SecondCarousel/SecondCarousel'
-import MainZalupa from './components/MainZalupa/MainZalupa'
+import MainCatalog from './components/MainCatalog/MainCatalog'
 
 function App() {
   return (
     <>
-      <MainZalupa />
+      <MainCatalog />
     </>
   )
 }
