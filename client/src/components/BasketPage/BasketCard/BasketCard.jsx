@@ -14,47 +14,39 @@ import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import { basketCardStyle, theme } from './Style'
 import { ThemeProvider } from '@mui/material/styles'
-import axios from 'axios'
+// import axios from 'axios'
 import { useCart } from '../../../hooks/useCart'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import {
+  addProductToTheCart,
+  decreaseQuantityOfProducts,
+  removeProduct,
+} from '../../../redux/reducers/CartReducer/CartSlice'
+import {
+  addCartItems,
+  decreaseQuantity,
+  deleteCartItems,
+} from '../../../redux/reducers/CartReducer/ActionCreator'
 
 function BascetCard({ productInShop }) {
-  const { cartQuantity, _id, product } = productInShop
-  const { name, brand, currentPrice, quantity, imageUrls } = product
-  const { actualToken } = useCart()
+  const { cartQuantity, product } = productInShop
+  const { name, brand, currentPrice, quantity, imageUrls, _id } = product
+  console.log(product)
+  // const { actualToken } = useCart()
+  const dispatch = useDispatch()
 
-  const deleteProduct = async () => {
-    const response = await axios.delete(`/api/cart/${product._id}`, {
-      headers: {
-        Authorization: `${actualToken}`,
-      },
-    })
-    return response
+  const addProductToCart = () => {
+    dispatch(addCartItems(_id))
   }
 
-  const addProductToCart = async () => {
-    const response = await axios.put(
-      `/api/cart/${product._id}`,
-      {},
-      {
-        headers: {
-          Authorization: `${actualToken}`,
-        },
-      }
-    )
-    return response
+  const deleteProduct = () => {
+    dispatch(deleteCartItems(_id))
   }
 
-  const decreaseQuantity = async () => {
-    const response = await axios.delete(`/api/cart/product/${product._id}`, {
-      headers: {
-        Authorization: `${actualToken}`,
-      },
-    })
-    return response
+  const decreaseQuantityOfProducts = () => {
+    dispatch(decreaseQuantity(_id))
   }
-
-  // if(!productInShop)
 
   return (
     <Grid item>
@@ -96,7 +88,7 @@ function BascetCard({ productInShop }) {
                     <Grid>
                       <Button>
                         <RemoveIcon
-                          onClick={decreaseQuantity}
+                          onClick={decreaseQuantityOfProducts}
                           fontSize="small"
                         />
                       </Button>

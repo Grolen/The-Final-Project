@@ -26,10 +26,10 @@ const Header = () => {
   const { itemsInCart, isCartLoading, logoutFunc } = useCart()
   const { products } = itemsInCart
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(cartItems())
-  }, [dispatch])
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(cartItems())
+  // }, [dispatch])
 
   const linksAndDescription = [
     { link: '/men', description: 'men' },

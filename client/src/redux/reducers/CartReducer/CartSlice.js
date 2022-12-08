@@ -14,22 +14,40 @@ const initialState = {
 const CartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {},
-  extraReducers: {
-    [cartItems.fulfilled.type]: (state, action) => {
-      state.isCartLoading = false
-      state.cartError = ''
-      state.itemsInCart = action.payload
+  reducers: {
+    // incorrect reducers
+    addProductToTheCart(state, action) {
+      state.itemsInCart.products.push(action.payload)
     },
-    [cartItems.pending.type]: (state) => {
-      state.isCartLoading = true
+    decreaseQuantityOfProducts(state) {
+      state.itemsInCart.products.pop()
     },
-    [cartItems.rejected.type]: (state, action) => {
-      state.isCartLoading = false
-      state.cartError = action.payload
+    removeProduct(state, action) {
+      state.itemsInCart = state.itemsInCart.products.filter(
+        (product) => product._id !== action.payload._id
+      )
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(cartItems.fulfilled, (state, action) => {
+        state.isCartLoading = false
+        state.cartError = ''
+        state.itemsInCart = action.payload
+      })
+      .addCase(cartItems.pending, (state) => {
+        state.isCartLoading = true
+      })
+      .addCase(cartItems.rejected, (state, action) => {
+        state.isCartLoading = false
+        state.cartError = action.payload
+      })
   },
 })
 
-// export const {} = CartSlice.actions
+export const {
+  addProductToTheCart,
+  removeProduct,
+  decreaseQuantityOfProducts,
+} = CartSlice.actions
 export default CartSlice.reducer

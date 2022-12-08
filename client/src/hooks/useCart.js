@@ -18,14 +18,14 @@ export const useCart = () => {
   const parsed = JSON.parse(infoAboutUser)
   const actualToken = parsed.token
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const { itemsInCart, isCartLoading, cartError } = useSelector(
     (state) => state.cartReducer
   )
 
-  // useEffect(() => {
-  //   dispatch(cartItems())
-  // }, [])
+  useEffect(() => {
+    dispatch(cartItems())
+  }, [dispatch])
 
   return {
     itemsInCart,

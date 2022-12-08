@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography'
 import ClearIcon from '@mui/icons-material/Clear'
 import styles from './ModalElement.module.scss'
 import PropTypes from 'prop-types'
-import BascetCard from '../BasketPage/BasketCard/BasketCard'
+// import BascetCard from '../BasketPage/BasketCard/BasketCard'
 import { useCart } from '../../hooks/useCart'
 
 const ModalElement = ({ handleClose, cardContentProps, title }) => {
@@ -11,7 +11,7 @@ const ModalElement = ({ handleClose, cardContentProps, title }) => {
   const { itemsInCart, isCartLoading } = useCart()
   const { products } = itemsInCart
 
-  console.log(products)
+  console.log(itemsInCart)
 
   const styleForTitle = {
     color: '#3F3F3F',
@@ -29,17 +29,15 @@ const ModalElement = ({ handleClose, cardContentProps, title }) => {
         const { cartQuantity, product } = shopItem
         const { name, imageUrls, currentPrice } = product
         return (
-          <>
-            <div className={styles.mainContainer}>
-              <div className={styles.modalImgContainer}>
-                <img className={styles.imageOfProduct} src={imageUrls[1]} />
-              </div>
-              <div className={styles.descriptionContainer}>
-                <Typography> {name} </Typography>
-                <Typography> {currentPrice} </Typography>
-              </div>
+          <div key={index} className={styles.mainContainer}>
+            <div className={styles.modalImgContainer}>
+              <img className={styles.imageOfProduct} src={imageUrls[0]} />
             </div>
-          </>
+            <div className={styles.descriptionContainer}>
+              <Typography> {name} </Typography>
+              <Typography> {currentPrice} </Typography>
+            </div>
+          </div>
         )
       })}
     </div>

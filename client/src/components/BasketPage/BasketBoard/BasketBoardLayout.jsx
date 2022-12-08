@@ -13,11 +13,12 @@ const BascetBorderLayout = () => {
   const navigate = useNavigate()
   const { itemsInCart, isCartLoading, cartError } = useCart()
   const { _id, customerId, products } = itemsInCart
+  console.log('itemsInCart: ', itemsInCart)
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(cartItems())
-  }, [dispatch])
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(cartItems())
+  // }, [dispatch])
 
   const redirectToMain = () => {
     navigate('/')

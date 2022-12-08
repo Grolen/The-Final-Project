@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import Typography from '@mui/joy/Typography'
 import { Rating } from '@mui/material'
 import Button from '../Button/Button'
@@ -10,6 +10,10 @@ import Modal from '../Modal/Modal'
 import ModalElement from '../ModalElement/ModalElement'
 import styles from './CardContent.module.scss'
 import { useAuth } from '../../hooks/useAuth'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
+import { addCartItems } from '../../redux/reducers/CartReducer/ActionCreator'
+import { useCart } from '../../hooks/useCart'
 
 const CardContent = (cardContentProps) => {
   const {
@@ -24,11 +28,12 @@ const CardContent = (cardContentProps) => {
   } = cardContentProps
   const [amount, setAmount] = useState(23)
   const [open, setOpen] = useState(false)
-  const { token } = useAuth()
+  const { itemsInCart } = useCart()
+  // const { token } = useAuth()
+  const dispatch = useDispatch()
 
-  const infoAboutUser = localStorage.getItem(`InfoAboutUser`)
-  const parsed = JSON.parse(infoAboutUser)
-  const actualToken = parsed.token
+  const { customerId, products } = itemsInCart
+  const { cartQuantity, product } = products
 
   const blackBGButton = {
     width: '221px',
@@ -41,18 +46,8 @@ const CardContent = (cardContentProps) => {
     setAmount(event.target.value)
   }
 
-  const addProduct = async () => {
-    setOpen(true)
-    const response = await axios.put(
-      `/api/cart/${_id}`,
-      {},
-      {
-        headers: {
-          Authorization: `${actualToken}`,
-        },
-      }
-    )
-    return response
+  const addProduct = () => {
+    dispatch(addCartItems(_id))
   }
 
   const handleClose = () => setOpen(false)
@@ -125,5 +120,16 @@ const CardContent = (cardContentProps) => {
     </>
   )
 }
+
+CardContent.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  cardContentProps: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+}
+
+CardContent.defaultProps = {
+  title: 'Cart',
+}
+
 
 export default CardContent
